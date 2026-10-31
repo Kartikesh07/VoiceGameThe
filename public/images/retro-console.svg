@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+    <defs>
+      <linearGradient id="crtBg" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#0c0d12"/>
+        <stop offset="100%" stop-color="#141724"/>
+      </linearGradient>
+      <linearGradient id="greenScan" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#bef264"/>
+        <stop offset="100%" stop-color="#10b981"/>
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="800" fill="url(#crtBg)"/>
+    <!-- CRT Curved Screen Frame -->
+    <rect x="180" y="80" width="840" height="640" rx="40" fill="#1b212d" stroke="#2f384a" stroke-width="8"/>
+    <rect x="220" y="110" width="760" height="580" rx="28" fill="#060c07" stroke="#16381e" stroke-width="4"/>
+    <!-- Vector wireframe grid in CRT -->
+    <g stroke="#bef264" stroke-width="1.5" opacity="0.4">
+      <line x1="220" y1="520" x2="980" y2="520"/>
+      <line x1="220" y1="560" x2="980" y2="560"/>
+      <line x1="220" y1="610" x2="980" y2="610"/>
+      <line x1="220" y1="670" x2="980" y2="670"/>
+      <!-- Perspective lines to horizon -->
+      <line x1="600" y1="480" x2="250" y2="690"/>
+      <line x1="600" y1="480" x2="380" y2="690"/>
+      <line x1="600" y1="480" x2="500" y2="690"/>
+      <line x1="600" y1="480" x2="600" y2="690"/>
+      <line x1="600" y1="480" x2="700" y2="690"/>
+      <line x1="600" y1="480" x2="820" y2="690"/>
+      <line x1="600" y1="480" x2="950" y2="690"/>
+    </g>
+    <!-- Wireframe 3D Mountain / Object -->
+    <polygon points="600,280 440,480 760,480" fill="none" stroke="#bef264" stroke-width="3"/>
+    <polygon points="600,280 520,480 680,480" fill="none" stroke="#bef264" stroke-width="2"/>
+    <line x1="600" y1="280" x2="600" y2="480" stroke="#bef264" stroke-width="3"/>
+    <!-- CRT phosphor scanlines effect -->
+    <line x1="220" y1="200" x2="980" y2="200" stroke="#ffffff" stroke-width="1" opacity="0.08"/>
+    <line x1="220" y1="260" x2="980" y2="260" stroke="#ffffff" stroke-width="1" opacity="0.08"/>
+    <line x1="220" y1="320" x2="980" y2="320" stroke="#ffffff" stroke-width="1" opacity="0.08"/>
+    <line x1="220" y1="380" x2="980" y2="380" stroke="#ffffff" stroke-width="1" opacity="0.08"/>
+    <!-- Terminal text overlay -->
+    <text x="270" y="170" fill="#bef264" font-family="monospace" font-size="22" letter-spacing="4">SYSTEM: VECTREX PROTOCOL 1984 [ONLINE]</text>
+    <text x="270" y="210" fill="#6ee7b7" font-family="monospace" font-size="16" letter-spacing="2">60 FPS // SYNCHRONIZED VECTOR DISPLAY</text>
+  </svg>

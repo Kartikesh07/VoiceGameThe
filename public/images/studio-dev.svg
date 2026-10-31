@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+    <defs>
+      <linearGradient id="studioWall" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#0a0c10"/>
+        <stop offset="100%" stop-color="#141822"/>
+      </linearGradient>
+      <linearGradient id="codeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#1e293b"/>
+        <stop offset="100%" stop-color="#0f172a"/>
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="800" fill="url(#studioWall)"/>
+    <!-- Desk surface -->
+    <polygon points="0,580 1200,580 1200,800 0,800" fill="#10141b"/>
+    <!-- Dual monitors -->
+    <!-- Left Monitor (Code Editor) -->
+    <rect x="150" y="160" width="420" height="340" rx="12" fill="#1e2430" stroke="#334155" stroke-width="4"/>
+    <rect x="165" y="175" width="390" height="310" rx="6" fill="#0b0f17"/>
+    <!-- Code lines -->
+    <g fill="#bef264" opacity="0.8">
+      <rect x="185" y="200" width="80" height="8" rx="2"/>
+      <rect x="275" y="200" width="110" height="8" rx="2" fill="#38bdf8"/>
+      <rect x="210" y="225" width="160" height="8" rx="2" fill="#f43f5e"/>
+      <rect x="210" y="250" width="130" height="8" rx="2" fill="#e2e8f0"/>
+      <rect x="240" y="275" width="190" height="8" rx="2" fill="#a78bfa"/>
+      <rect x="240" y="300" width="90" height="8" rx="2" fill="#bef264"/>
+      <rect x="210" y="325" width="40" height="8" rx="2" fill="#e2e8f0"/>
+      <rect x="185" y="350" width="120" height="8" rx="2" fill="#38bdf8"/>
+    </g>
+    <!-- Right Monitor (3D Engine Viewport) -->
+    <rect x="610" y="160" width="460" height="340" rx="12" fill="#1e2430" stroke="#334155" stroke-width="4"/>
+    <rect x="625" y="175" width="430" height="310" rx="6" fill="#06090e"/>
+    <!-- 3D wireframe mesh in viewport -->
+    <polygon points="840,240 730,410 950,410" fill="none" stroke="#38bdf8" stroke-width="2"/>
+    <polygon points="840,240 800,320 880,320" fill="none" stroke="#bef264" stroke-width="2"/>
+    <circle cx="840" cy="240" r="6" fill="#bef264"/>
+    <circle cx="730" cy="410" r="6" fill="#38bdf8"/>
+    <circle cx="950" cy="410" r="6" fill="#38bdf8"/>
+    <!-- Monitor stands -->
+    <rect x="345" y="500" width="30" height="80" fill="#2d3748"/>
+    <rect x="300" y="575" width="120" height="10" rx="3" fill="#334155"/>
+    <rect x="825" y="500" width="30" height="80" fill="#2d3748"/>
+    <rect x="780" y="575" width="120" height="10" rx="3" fill="#334155"/>
+    <!-- Studio Coffee Mug -->
+    <rect x="1010" y="560" width="36" height="48" rx="4" fill="#e2e8f0"/>
+    <path d="M1046,570 C1058,570 1058,598 1046,598" fill="none" stroke="#e2e8f0" stroke-width="5"/>
+  </svg>

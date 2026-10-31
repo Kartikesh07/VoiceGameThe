@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+    <defs>
+      <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#07090e"/>
+        <stop offset="60%" stop-color="#141124"/>
+        <stop offset="100%" stop-color="#2a1236"/>
+      </linearGradient>
+      <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#00f2fe"/>
+        <stop offset="100%" stop-color="#4facfe"/>
+      </linearGradient>
+      <linearGradient id="neonPink" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#ff0844"/>
+        <stop offset="100%" stop-color="#ffb199"/>
+      </linearGradient>
+      <linearGradient id="beam" x1="0%" y1="100%" x2="0%" y2="0%">
+        <stop offset="0%" stop-color="#bef264" stop-opacity="0.4"/>
+        <stop offset="100%" stop-color="#bef264" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="800" fill="url(#sky)"/>
+    <polygon points="200,800 280,0 350,0 300,800" fill="url(#beam)"/>
+    <polygon points="850,800 800,0 860,0 930,800" fill="url(#beam)"/>
+    <!-- Distant towers -->
+    <rect x="50" y="280" width="80" height="520" fill="#0d1117" opacity="0.9"/>
+    <rect x="180" y="200" width="110" height="600" fill="#0f151f" opacity="0.95"/>
+    <rect x="330" y="320" width="90" height="480" fill="#0b0e14"/>
+    <rect x="460" y="160" width="140" height="640" fill="#151b26"/>
+    <rect x="640" y="240" width="100" height="560" fill="#0d1117"/>
+    <rect x="780" y="140" width="150" height="660" fill="#141a24"/>
+    <rect x="970" y="270" width="90" height="530" fill="#0b0e14"/>
+    <rect x="1090" y="220" width="90" height="580" fill="#121822"/>
+    <!-- Glowing antenna and spires -->
+    <line x1="530" y1="60" x2="530" y2="160" stroke="#00f2fe" stroke-width="3"/>
+    <circle cx="530" cy="55" r="5" fill="#bef264"/>
+    <line x1="855" y1="40" x2="855" y2="140" stroke="#ff0844" stroke-width="3"/>
+    <circle cx="855" cy="35" r="5" fill="#ff0844"/>
+    <!-- Window grid patterns -->
+    <g fill="#bef264" opacity="0.6">
+      <circle cx="490" cy="220" r="2"/><circle cx="510" cy="220" r="2"/><circle cx="530" cy="220" r="2"/>
+      <circle cx="490" cy="250" r="2"/><circle cx="530" cy="250" r="2"/><circle cx="550" cy="250" r="2"/>
+      <circle cx="510" cy="280" r="2"/><circle cx="530" cy="280" r="2"/><circle cx="570" cy="280" r="2"/>
+      <circle cx="490" cy="310" r="2"/><circle cx="550" cy="310" r="2"/>
+    </g>
+    <g fill="#00f2fe" opacity="0.7">
+      <circle cx="810" cy="200" r="2"/><circle cx="830" cy="200" r="2"/><circle cx="850" cy="200" r="2"/>
+      <circle cx="830" cy="230" r="2"/><circle cx="870" cy="230" r="2"/><circle cx="890" cy="230" r="2"/>
+      <circle cx="810" cy="260" r="2"/><circle cx="850" cy="260" r="2"/><circle cx="870" cy="260" r="2"/>
+    </g>
+    <!-- Skybridge -->
+    <rect x="290" y="380" width="490" height="18" fill="#1f2836" stroke="#00f2fe" stroke-width="1.5"/>
+    <rect x="290" y="386" width="490" height="4" fill="#00f2fe" opacity="0.8"/>
+    <!-- Foreground flying vehicle -->
+    <polygon points="620,490 710,510 650,525 580,515" fill="#2b3442"/>
+    <ellipse cx="610" cy="518" rx="8" ry="3" fill="#bef264"/>
+    <polygon points="650,525 780,535 730,545 610,530" fill="#00f2fe" opacity="0.4"/>
+    <!-- Fog & road glow -->
+    <rect x="0" y="650" width="1200" height="150" fill="url(#sky)" opacity="0.9"/>
+    <ellipse cx="600" cy="800" rx="700" ry="120" fill="#ff0844" opacity="0.25"/>
+  </svg>

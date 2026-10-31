@@ -1,0 +1,57 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import { Film, Play, Clock, ArrowUpRight } from "lucide-react";
+import { getStoriesByCategory } from "@/data/stories";
+import { VideoCard } from "@/components/video/VideoCard";
+
+export default function DocumentariesPage() {
+  const docs = getStoriesByCategory("DOCUMENTARIES");
+  const featured = docs[0];
+  const others = docs.slice(1);
+
+  return (
+    <div className="editorial-wrap py-10 lg:py-16 space-y-12">
+      {/* Header */}
+      <div>
+        <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#BEF264] flex items-center gap-2 mb-2">
+          <Film size={14} className="text-[#BEF264]" />
+          CINEMA & MOTION JOURNALISM
+        </span>
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-[#F5F5F4] tracking-tight">
+          Documentaries & Stories in Motion<span className="text-[#BEF264]">.</span>
+        </h1>
+        <p className="text-sm sm:text-base text-[#A1A1AA] max-w-2xl mt-2 leading-relaxed">
+          Feature-length investigative video essays, digital preservation chronicles, and behind-the-scenes indie survival films.
+        </p>
+      </div>
+
+      {/* Featured Video Player Banner */}
+      {featured && (
+        <section aria-label="Featured Documentary">
+          <VideoCard story={featured} featured />
+        </section>
+      )}
+
+      {/* Video Gallery Grid */}
+      <section aria-label="Documentary Archive" className="space-y-6">
+        <div className="flex items-center justify-between pb-4 border-b border-[#2B3038]">
+          <h2 className="text-2xl font-bold text-[#F5F5F4]">
+            Documentary Archive ({docs.length})
+          </h2>
+          <span className="text-xs text-[#A1A1AA]">
+            Stream in 4K UHD with full chapter indexing
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {docs.map((story) => (
+            <VideoCard key={story.id} story={story} />
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+

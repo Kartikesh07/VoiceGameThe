@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+    <defs>
+      <linearGradient id="aurora" x1="0%" y1="0%" x2="100%" y2="80%">
+        <stop offset="0%" stop-color="#040b14"/>
+        <stop offset="40%" stop-color="#0d282e"/>
+        <stop offset="70%" stop-color="#144238"/>
+        <stop offset="100%" stop-color="#09141a"/>
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="800" fill="url(#aurora)"/>
+    <!-- Massive glowing moon -->
+    <circle cx="600" cy="280" r="140" fill="#f8fafc" opacity="0.85"/>
+    <circle cx="600" cy="280" r="160" fill="none" stroke="#bef264" stroke-width="3" opacity="0.4"/>
+    <!-- Aurora wave -->
+    <path d="M0,180 Q350,90 700,220 T1200,160" fill="none" stroke="#bef264" stroke-width="40" opacity="0.25" filter="blur(18px)"/>
+    <!-- Mountain ranges (Low-poly styling) -->
+    <polygon points="100,600 350,260 620,600" fill="#13242c"/>
+    <polygon points="350,260 480,410 620,600" fill="#0d1b22"/>
+    <polygon points="450,620 750,220 1050,620" fill="#162c36"/>
+    <polygon points="750,220 890,390 1050,620" fill="#0e1f26"/>
+    <!-- Forest silhouette -->
+    <g fill="#070e12">
+      <polygon points="120,680 140,590 160,680"/>
+      <polygon points="150,690 175,580 200,690"/>
+      <polygon points="190,680 210,600 230,680"/>
+      <polygon points="270,700 295,570 320,700"/>
+      <polygon points="360,690 380,610 400,690"/>
+      <polygon points="780,690 805,580 830,690"/>
+      <polygon points="860,700 885,570 910,700"/>
+      <polygon points="980,680 1005,590 1030,680"/>
+    </g>
+    <rect x="0" y="660" width="1200" height="140" fill="#050a0d"/>
+  </svg>

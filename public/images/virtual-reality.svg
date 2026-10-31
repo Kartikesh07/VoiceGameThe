@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+    <defs>
+      <linearGradient id="vrDark" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#05070a"/>
+        <stop offset="50%" stop-color="#0c1322"/>
+        <stop offset="100%" stop-color="#18233a"/>
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="800" fill="url(#vrDark)"/>
+    <!-- Neural lattice / Nodes -->
+    <g stroke="#0284c7" stroke-width="1.5" opacity="0.6">
+      <line x1="600" y1="400" x2="350" y2="250"/>
+      <line x1="600" y1="400" x2="850" y2="250"/>
+      <line x1="600" y1="400" x2="400" y2="580"/>
+      <line x1="600" y1="400" x2="800" y2="580"/>
+      <line x1="350" y1="250" x2="200" y2="400"/>
+      <line x1="850" y1="250" x2="1000" y2="400"/>
+      <line x1="400" y1="580" x2="200" y2="400"/>
+      <line x1="800" y1="580" x2="1000" y2="400"/>
+    </g>
+    <!-- Glowing Data Nodes -->
+    <circle cx="600" cy="400" r="24" fill="#bef264" opacity="0.9"/>
+    <circle cx="350" cy="250" r="14" fill="#38bdf8"/>
+    <circle cx="850" cy="250" r="14" fill="#38bdf8"/>
+    <circle cx="400" cy="580" r="14" fill="#38bdf8"/>
+    <circle cx="800" cy="580" r="14" fill="#38bdf8"/>
+    <circle cx="200" cy="400" r="18" fill="#f43f5e"/>
+    <circle cx="1000" cy="400" r="18" fill="#f43f5e"/>
+    <circle cx="600" cy="400" r="45" fill="none" stroke="#bef264" stroke-width="2" opacity="0.4"/>
+  </svg>
