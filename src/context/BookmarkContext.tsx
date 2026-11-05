@@ -1,91 +1,62 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useSyncExternalStore } from "react";
 
-interface BookmarkContextType {
+const STORAGE_KEY = "thegamevoice_saved_articles";
+const empty: string[] = [];
+let snapshot = empty;
+let serialized: string | null | undefined;
+let persistent = true;
+const listeners = new Set<() => void>();
+function read() {
+  try {
+    const value = localStorage.getItem(STORAGE_KEY);
+    if (value !== serialized) {
+      serialized = value;
+      const parsed: unknown = value ? JSON.parse(value) : [];
+      snapshot = Array.isArray(parsed) ? [...new Set(parsed.filter((id): id is string => typeof id === "string"))] : empty;
+    }
+  } catch { persistent = false; }
+  return snapshot;
+}
+function subscribe(callback: () => void) {
+  listeners.add(callback);
+  window.addEventListener("storage", callback);
+  return () => { listeners.delete(callback); window.removeEventListener("storage", callback); };
+}
+function write(next: string[]) {
+  snapshot = next;
+  try { serialized = JSON.stringify(next); localStorage.setItem(STORAGE_KEY, serialized); persistent = true; }
+  catch { persistent = false; }
+  listeners.forEach((callback) => callback());
+}
+const subscribeMount = () => () => {};
+interface BookmarkState {
   bookmarks: string[];
   isBookmarked: (id: string) => boolean;
   toggleBookmark: (id: string) => void;
   removeBookmark: (id: string) => void;
   clearBookmarks: () => void;
   mounted: boolean;
+  persistent: boolean;
 }
-
-const BookmarkContext = createContext<BookmarkContextType>({
-  bookmarks: [],
+const BookmarkContext = createContext<BookmarkState>({
+  bookmarks: empty,
   isBookmarked: () => false,
   toggleBookmark: () => {},
   removeBookmark: () => {},
   clearBookmarks: () => {},
   mounted: false,
+  persistent: true,
 });
-
-const STORAGE_KEY = "thegamevoice_saved_articles";
-
 export function BookmarkProvider({ children }: { children: React.ReactNode }) {
-  const [bookmarks, setBookmarks] = useState<string[]>([]);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed)) {
-          setBookmarks(parsed);
-        }
-      }
-    } catch {
-      // Ignore localStorage errors
-    } finally {
-      setMounted(true);
-    }
-  }, []);
-
-  const saveBookmarks = (newBookmarks: string[]) => {
-    setBookmarks(newBookmarks);
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(newBookmarks));
-    } catch {
-      // Ignore
-    }
-  };
-
-  const isBookmarked = (id: string) => bookmarks.includes(id);
-
-  const toggleBookmark = (id: string) => {
-    if (bookmarks.includes(id)) {
-      saveBookmarks(bookmarks.filter((b) => b !== id));
-    } else {
-      saveBookmarks([...bookmarks, id]);
-    }
-  };
-
-  const removeBookmark = (id: string) => {
-    saveBookmarks(bookmarks.filter((b) => b !== id));
-  };
-
-  const clearBookmarks = () => {
-    saveBookmarks([]);
-  };
-
-  return (
-    <BookmarkContext.Provider
-      value={{
-        bookmarks,
-        isBookmarked,
-        toggleBookmark,
-        removeBookmark,
-        clearBookmarks,
-        mounted,
-      }}
-    >
-      {children}
-    </BookmarkContext.Provider>
-  );
+  const bookmarks = useSyncExternalStore(subscribe, read, () => empty);
+  const mounted = useSyncExternalStore(subscribeMount, () => true, () => false);
+  return <BookmarkContext.Provider value={{ bookmarks, mounted, persistent,
+    isBookmarked: (id) => bookmarks.includes(id),
+    toggleBookmark: (id) => { const current = read(); write(current.includes(id) ? current.filter((item) => item !== id) : [...current, id]); },
+    removeBookmark: (id) => write(read().filter((item) => item !== id)),
+    clearBookmarks: () => write([]),
+  }}>{children}</BookmarkContext.Provider>;
 }
-
-export function useBookmarks() {
-  return useContext(BookmarkContext);
-}
-
+export function useBookmarks() { return useContext(BookmarkContext); }

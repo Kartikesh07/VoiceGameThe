@@ -1,13 +1,16 @@
 "use client";
+import { StoryStatus } from "@/components/ui/StoryStatus";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { ArrowUpRight, ChevronDown, ChevronUp, Star } from "lucide-react";
+import { Artwork, BookmarkButton, Label } from "@/components/ui/editorial";
 import type { Story } from "@/types";
-import { Artwork, Label, BookmarkButton } from "@/components/ui/editorial";
+import { ArrowUpRight, ChevronDown, ChevronUp } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
 export function ReviewCard({ story, priority = false }: { story: Story; priority?: boolean }) {
   const [expanded, setExpanded] = useState(false);
+  const reduced = useReducedMotion();
   const review = story.review;
   const href = `/articles/${story.slug}`;
 
@@ -25,7 +28,7 @@ export function ReviewCard({ story, priority = false }: { story: Story; priority
           <div className="absolute top-3 left-3 bg-[#0B0D10]/90 backdrop-blur-md border border-[#2B3038] px-2.5 py-1 rounded flex items-center gap-1.5 shadow-md">
             <span className="text-[#BEF264] text-xs font-black">★</span>
             <span className="text-sm font-extrabold text-[#F5F5F4] tabular-nums">
-              {review.score.toFixed(1)}
+              {review.score.toFixed(1)} <span className="text-[10px] font-medium">sample / 10</span>
             </span>
           </div>
         )}
@@ -45,7 +48,7 @@ export function ReviewCard({ story, priority = false }: { story: Story; priority
         </div>
 
         <Link href={href} className="block group-hover:text-[#BEF264] transition-colors mb-2">
-          <h3 className="text-xl font-bold text-[#F5F5F4] leading-snug">
+          <StoryStatus story={story} /><h3 className="text-xl font-bold text-[#F5F5F4] leading-snug">
             {story.title}
           </h3>
         </Link>
@@ -73,16 +76,17 @@ export function ReviewCard({ story, priority = false }: { story: Story; priority
               type="button"
               onClick={() => setExpanded(!expanded)}
               aria-expanded={expanded}
+              aria-controls={`verdict-${story.id}`}
               className="flex items-center justify-between w-full text-[11px] font-semibold text-[#A1A1AA] hover:text-[#BEF264] transition-colors py-1"
             >
               <span>{expanded ? "Hide Verdict Highlights" : "Quick Verdict Summary"}</span>
               {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
             </button>
 
-            {expanded && (
-              <div className="mt-3 p-3 bg-[#1C2229] border border-[#2B3038] rounded text-xs space-y-2 animate-in fade-in duration-200">
+            <AnimatePresence initial={false}>{expanded && (
+              <motion.div initial={{ opacity: 0, y: reduced ? 0 : -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: reduced ? 0 : .18 }} id={`verdict-${story.id}`} className="mt-3 p-3 bg-[#1C2229] border border-[#2B3038] rounded text-xs space-y-2">
                 <p className="text-[#F5F5F4] italic font-medium leading-relaxed">
-                  "{review.summary}"
+                  &quot;{review.summary}&quot;
                 </p>
                 <div className="grid grid-cols-2 gap-2 pt-2 border-t border-[#2B3038]/60 text-[11px]">
                   <div>
@@ -98,8 +102,8 @@ export function ReviewCard({ story, priority = false }: { story: Story; priority
                     <span className="text-[#A1A1AA] line-clamp-2">– {review.cons[0]}</span>
                   </div>
                 </div>
-              </div>
-            )}
+              </motion.div>
+            )}</AnimatePresence>
           </div>
         )}
 

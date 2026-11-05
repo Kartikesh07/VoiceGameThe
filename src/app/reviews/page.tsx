@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { Star, SlidersHorizontal, ArrowUpRight, ShieldCheck } from "lucide-react";
-import { getStoriesByCategory } from "@/data/stories";
-import { Artwork, Label, BookmarkButton } from "@/components/ui/editorial";
 import { ReviewCard } from "@/components/reviews/ReviewCard";
+import { Artwork, BookmarkButton } from "@/components/ui/editorial";
+import { getStoriesByCategory } from "@/data/stories";
+import { ArrowUpRight, ShieldCheck, SlidersHorizontal, Star } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function ReviewsPage() {
   const allReviews = getStoriesByCategory("REVIEWS");
@@ -31,7 +31,7 @@ export default function ReviewsPage() {
   const featuredReview = sorted[0];
 
   return (
-    <div className="editorial-wrap py-10 lg:py-16 space-y-12">
+    <div className="category-page category-reviews editorial-wrap py-10 lg:py-16 space-y-12">
       {/* Page Title */}
       <div>
         <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#BEF264] flex items-center gap-2 mb-2">
@@ -42,7 +42,7 @@ export default function ReviewsPage() {
           Game Reviews & The Verdict<span className="text-[#BEF264]">.</span>
         </h1>
         <p className="text-sm sm:text-base text-[#A1A1AA] max-w-2xl mt-2 leading-relaxed">
-          Exhaustive, ad-free video game evaluations scored with uncompromised critical rigor and transparent metrics.
+          Explore the review format through fictional game concepts. Scores, verdicts and platform details below are demonstration data, not published evaluations.
         </p>
       </div>
 
@@ -72,7 +72,7 @@ export default function ReviewsPage() {
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-[10px] font-black uppercase tracking-widest text-[#BEF264] bg-[#0B0D10] px-3 py-1 rounded border border-[#2B3038]">
-                    CRITIC'S CHOICE
+                    SAMPLE REVIEW
                   </span>
                   {featuredReview.review && (
                     <div className="flex items-baseline gap-1 text-[#BEF264]">
@@ -93,7 +93,7 @@ export default function ReviewsPage() {
 
                 {featuredReview.review && (
                   <p className="text-xs sm:text-sm text-[#F5F5F4] italic font-medium mb-4 leading-relaxed">
-                    "{featuredReview.review.summary}"
+                    &quot;{featuredReview.review.summary}&quot;
                   </p>
                 )}
 
@@ -106,6 +106,7 @@ export default function ReviewsPage() {
                     {featuredReview.review.platform.map((p) => (
                       <span
                         key={p}
+                  aria-pressed={platformFilter === p}
                         className="text-[10px] bg-[#1C2229] border border-[#2B3038] px-2.5 py-1 rounded text-[#A1A1AA]"
                       >
                         {p}
@@ -138,6 +139,7 @@ export default function ReviewsPage() {
           {platforms.map((p) => (
             <button
               key={p}
+                  aria-pressed={platformFilter === p}
               type="button"
               onClick={() => setPlatformFilter(p)}
               className={`px-3 py-1.5 text-xs font-semibold rounded-full whitespace-nowrap transition-colors cursor-pointer ${
@@ -154,6 +156,7 @@ export default function ReviewsPage() {
         <div className="flex items-center gap-2 text-xs text-[#A1A1AA] shrink-0 self-end sm:self-auto">
           <SlidersHorizontal size={14} />
           <select
+            aria-label="Sort reviews"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as "score" | "newest")}
             className="bg-[#15191F] border border-[#2B3038] text-[#F5F5F4] text-xs px-2.5 py-1 rounded focus:outline-none focus:ring-1 focus:ring-[#BEF264]"
@@ -164,6 +167,7 @@ export default function ReviewsPage() {
         </div>
       </div>
 
+      {sorted.length === 0 && <p role="status" className="py-12">No sample reviews for this platform. Choose another platform to continue.</p>}
       {/* Review Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {sorted.map((story) => (

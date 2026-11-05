@@ -1,10 +1,7 @@
-"use client";
 
-import React from "react";
-import Link from "next/link";
-import { Film, Play, Clock, ArrowUpRight } from "lucide-react";
-import { getStoriesByCategory } from "@/data/stories";
 import { VideoCard } from "@/components/video/VideoCard";
+import { getStoriesByCategory } from "@/data/stories";
+import { Film } from "lucide-react";
 
 export default function DocumentariesPage() {
   const docs = getStoriesByCategory("DOCUMENTARIES");
@@ -12,7 +9,7 @@ export default function DocumentariesPage() {
   const others = docs.slice(1);
 
   return (
-    <div className="editorial-wrap py-10 lg:py-16 space-y-12">
+    <div className="category-page category-documentaries editorial-wrap py-10 lg:py-16 space-y-12">
       {/* Header */}
       <div>
         <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#BEF264] flex items-center gap-2 mb-2">
@@ -23,7 +20,7 @@ export default function DocumentariesPage() {
           Documentaries & Stories in Motion<span className="text-[#BEF264]">.</span>
         </h1>
         <p className="text-sm sm:text-base text-[#A1A1AA] max-w-2xl mt-2 leading-relaxed">
-          Feature-length investigative video essays, digital preservation chronicles, and behind-the-scenes indie survival films.
+          Explore written documentary concepts about preservation, animation and the people who make games. These previews do not include playable films.
         </p>
       </div>
 
@@ -41,12 +38,12 @@ export default function DocumentariesPage() {
             Documentary Archive ({docs.length})
           </h2>
           <span className="text-xs text-[#A1A1AA]">
-            Stream in 4K UHD with full chapter indexing
+            Written film concepts · no video attached
           </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {docs.map((story) => (
+          {others.map((story) => (
             <VideoCard key={story.id} story={story} />
           ))}
         </div>

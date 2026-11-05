@@ -61,6 +61,9 @@ export interface ArticleContent {
 }
 
 export interface Story {
+  editorialStatus: "demonstration" | "source-summary";
+  source?: { url: string; publication: string; originalTitle: string };
+  artworkCredit: string;
   id: string;
   slug: string;
   category: Category;

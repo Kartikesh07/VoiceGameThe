@@ -1,12 +1,11 @@
-import React from "react";
-import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Clock, Star, Play } from "lucide-react";
-import { stories, getTrendingStories, getStoriesByCategory } from "@/data/stories";
-import { Artwork, Label, SectionTitle, BookmarkButton } from "@/components/ui/editorial";
 import { TrendRail } from "@/components/articles/TrendRail";
 import Latest from "@/components/home/Latest";
 import { ReviewCard } from "@/components/reviews/ReviewCard";
+import { Artwork, BookmarkButton, Label, SectionTitle } from "@/components/ui/editorial";
 import { VideoCard } from "@/components/video/VideoCard";
+import { getStoriesByCategory, getTrendingStories, stories } from "@/data/stories";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 export default function HomePage() {
   const heroStory = stories[0]; // "The worlds we lose ourselves in"
@@ -19,28 +18,16 @@ export default function HomePage() {
   const docSecondaryStories = [stories[11], stories[18]];
 
   return (
-    <div className="space-y-16 lg:space-y-24">
-      {/* 1. Edition Ticker Strip */}
-      <div className="border-b border-[#2B3038] bg-[#0E1116]">
-        <div className="editorial-wrap py-3 flex flex-wrap items-center justify-between gap-3 text-[11px] font-semibold text-[#A1A1AA] tracking-wider uppercase">
-          <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1.5 text-[#BEF264]">
-              <span className="w-2 h-2 rounded-full bg-[#BEF264] inline-block animate-pulse" />
-              INDEPENDENT VOICES
-            </span>
-            <span className="text-[#2B3038]">|</span>
-            <span className="hidden sm:inline">EXTRAORDINARY VIRTUAL WORLDS</span>
-          </div>
-          <div className="flex items-center gap-4 text-[10px]">
-            <span>OCTOBER 2026 EDITION</span>
-            <span className="text-[#2B3038]">|</span>
-            <span className="text-[#F5F5F4]/80">VOL. IV · NO. 28</span>
-          </div>
+    <div className="home-page space-y-16 lg:space-y-24">
+      <div className="editorial-wrap home-masthead">
+        <p className="text-xs uppercase tracking-[.24em] text-[#BEF264]">A different perspective on play</p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mt-4">
+          <h2>Beyond<br /><span>the screen.</span></h2>
+          <p className="max-w-xs text-sm pb-2">Games worth a closer look.<br />The craft, the culture, the people behind them.</p>
         </div>
       </div>
-
       {/* 2. Featured Hero Section */}
-      <section className="editorial-wrap" aria-label="Hero Spotlight">
+      <section className="editorial-wrap home-hero" aria-label="Hero Spotlight">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           {/* Main Hero Card (8 cols) */}
           <div className="lg:col-span-8 group relative rounded-xl overflow-hidden border border-[#2B3038] bg-[#15191F] flex flex-col justify-end min-h-[460px] sm:min-h-[560px] lg:min-h-[620px]">
@@ -159,7 +146,7 @@ export default function HomePage() {
         <SectionTitle
           eyebrow="ON OUR RADAR"
           title="Trending Stories"
-          description="The discussions, critical essays, and breakthroughs capturing the gaming community right now."
+          description="Selected essays, published reading notes and editorial concepts."
         />
         <TrendRail stories={trendingStories} />
       </section>
@@ -173,14 +160,14 @@ export default function HomePage() {
           <SectionTitle
             eyebrow="CRITICAL ANALYSIS"
             title="The Verdict"
-            description="Exhaustive, independent game reviews scored with rigorous editorial standards."
+            description="Fictional game concepts with sample scores, verdicts and critical breakdowns."
             linkHref="/reviews"
             linkText="Browse all reviews archive"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {reviewStories.map((story, i) => (
-              <ReviewCard key={story.id} story={story} priority={i === 0} />
+            {reviewStories.map((story) => (
+              <ReviewCard key={story.id} story={story} />
             ))}
           </div>
         </div>
@@ -192,7 +179,7 @@ export default function HomePage() {
           {/* Visual Side (6 cols) */}
           <div className="lg:col-span-6 relative min-h-[380px] lg:min-h-[500px]">
             <Artwork
-              story={heroStory}
+              story={stories[16]}
               aspectRatio="aspect-auto"
               className="absolute inset-0 h-full w-full"
             />
@@ -225,7 +212,7 @@ export default function HomePage() {
                 <ArrowRight size={14} />
               </Link>
               <span className="text-xs text-[#636C65] font-semibold">
-                8 MIN READ · BY EDITORIAL DESK
+                EDITORIAL SAMPLE
               </span>
             </div>
           </div>
@@ -237,7 +224,7 @@ export default function HomePage() {
         <SectionTitle
           eyebrow="THE MINDS BEHIND PLAY"
           title="Craft & Culture"
-          description="In-depth studio investigations, technical engine breakthroughs, and extended creator interviews."
+          description="A published studio reading note alongside a fictional creator-interview brief."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -279,7 +266,7 @@ export default function HomePage() {
                   href={`/articles/${devStory.slug}`}
                   className="text-[#BEF264] font-bold flex items-center gap-1 group-hover:translate-x-1 transition-transform"
                 >
-                  EXPLORE STUDIO →
+                  READ STUDIO NOTE →
                 </Link>
               </div>
             </div>
@@ -289,7 +276,7 @@ export default function HomePage() {
           <article className="lg:col-span-5 bg-[#15191F] border border-[#2B3038] hover:border-[#BEF264]/40 rounded-xl p-6 sm:p-8 flex flex-col justify-between group transition-all">
             <div>
               <div className="flex items-center justify-between text-[10px] mb-4 text-[#A1A1AA]">
-                <Label>CREATOR INTERVIEW</Label>
+                <Label>INTERVIEW CONCEPT</Label>
                 <BookmarkButton storyId={interviewStory.id} size={15} />
               </div>
 
@@ -305,7 +292,7 @@ export default function HomePage() {
 
               {interviewStory.interview?.pullQuote && (
                 <blockquote className="my-4 pl-4 border-l-2 border-[#BEF264] text-xs sm:text-sm text-[#F5F5F4] italic leading-relaxed">
-                  "{interviewStory.interview.pullQuote}"
+                  &quot;{interviewStory.interview.pullQuote}&quot;
                 </blockquote>
               )}
 
@@ -315,12 +302,12 @@ export default function HomePage() {
             </div>
 
             <div className="pt-6 border-t border-[#2B3038] flex items-center justify-between text-xs text-[#A1A1AA]">
-              <span>WITH {interviewStory.interview?.interviewee.toUpperCase()}</span>
+              <span>FICTIONAL SUBJECT</span>
               <Link
                 href={`/articles/${interviewStory.slug}`}
                 className="text-[#BEF264] font-bold flex items-center gap-1 group-hover:translate-x-1 transition-transform"
               >
-                READ Q&A →
+                READ BRIEF →
               </Link>
             </div>
           </article>
@@ -331,9 +318,9 @@ export default function HomePage() {
       <section className="bg-[#0E1116] border-y border-[#2B3038] py-16 lg:py-24" aria-label="Documentaries in Motion">
         <div className="editorial-wrap">
           <SectionTitle
-            eyebrow="WATCH & DISCOVER"
+            eyebrow="THE DOCUMENTARY NOTEBOOK"
             title="Stories in Motion"
-            description="Feature-length video journalism, archival software archaeology, and intimate craft chronicles."
+            description="Written film treatments exploring preservation and creative craft. No playable films are attached."
             linkHref="/documentaries"
             linkText="Browse all documentaries"
           />

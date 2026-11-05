@@ -1,10 +1,8 @@
-"use client";
 
-import React from "react";
-import Link from "next/link";
-import { Mic, MessageSquare, ArrowUpRight, MapPin } from "lucide-react";
+import { Artwork, BookmarkButton, Label } from "@/components/ui/editorial";
 import { getStoriesByCategory } from "@/data/stories";
-import { Artwork, Label, BookmarkButton } from "@/components/ui/editorial";
+import { ArrowUpRight, MapPin, Mic } from "lucide-react";
+import Link from "next/link";
 
 export default function InterviewsPage() {
   const interviews = getStoriesByCategory("INTERVIEWS");
@@ -12,7 +10,7 @@ export default function InterviewsPage() {
   const others = interviews.slice(1);
 
   return (
-    <div className="editorial-wrap py-10 lg:py-16 space-y-12">
+    <div className="category-page category-interviews editorial-wrap py-10 lg:py-16 space-y-12">
       {/* Header */}
       <div>
         <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#BEF264] flex items-center gap-2 mb-2">
@@ -23,7 +21,7 @@ export default function InterviewsPage() {
           Developer Interviews & Dialogues<span className="text-[#BEF264]">.</span>
         </h1>
         <p className="text-sm sm:text-base text-[#A1A1AA] max-w-2xl mt-2 leading-relaxed">
-          Extended conversations with creative directors, sound designers, narrative architects, and indie pioneers.
+          Interview concepts exploring the people and decisions behind games. The subjects are fictional; these are proposed questions, not interview transcripts.
         </p>
       </div>
 
@@ -72,7 +70,7 @@ export default function InterviewsPage() {
 
               {featured.interview?.pullQuote && (
                 <blockquote className="my-4 pl-4 border-l-2 border-[#BEF264] text-sm text-[#F5F5F4] italic leading-relaxed bg-[#1C2229]/60 p-3 rounded-r">
-                  "{featured.interview.pullQuote}"
+                  &quot;{featured.interview.pullQuote}&quot;
                 </blockquote>
               )}
 
@@ -83,13 +81,13 @@ export default function InterviewsPage() {
 
             <div className="pt-6 border-t border-[#2B3038] flex items-center justify-between">
               <span className="text-xs text-[#A1A1AA]">
-                CONDUCTED BY {featured.author.name.toUpperCase()}
+                CONCEPT BY {featured.author.name.toUpperCase()}
               </span>
               <Link
                 href={`/articles/${featured.slug}`}
                 className="px-5 py-2.5 bg-[#BEF264] text-[#0B0D10] hover:bg-[#d5f88b] rounded-lg text-xs font-bold tracking-wider uppercase transition-colors flex items-center gap-1"
               >
-                <span>Read Full Interview</span>
+                <span>Read Interview Brief</span>
                 <ArrowUpRight size={15} />
               </Link>
             </div>
@@ -134,7 +132,7 @@ export default function InterviewsPage() {
 
                 {story.interview?.pullQuote && (
                   <blockquote className="my-3 pl-3 border-l-2 border-[#BEF264] text-xs text-[#F5F5F4] italic">
-                    "{story.interview.pullQuote}"
+                    &quot;{story.interview.pullQuote}&quot;
                   </blockquote>
                 )}
 
@@ -149,7 +147,7 @@ export default function InterviewsPage() {
                   href={`/articles/${story.slug}`}
                   className="text-[#BEF264] font-bold flex items-center gap-1 group-hover:translate-x-1 transition-transform"
                 >
-                  READ Q&A →
+                  READ BRIEF →
                 </Link>
               </div>
             </div>

@@ -1,10 +1,8 @@
-"use client";
 
-import React from "react";
-import Link from "next/link";
-import { Eye, Clock, ArrowUpRight } from "lucide-react";
+import { Artwork, BookmarkButton, Label } from "@/components/ui/editorial";
 import { getStoriesByCategory } from "@/data/stories";
-import { Artwork, Label, BookmarkButton } from "@/components/ui/editorial";
+import { ArrowUpRight, Eye } from "lucide-react";
+import Link from "next/link";
 
 export default function ImpressionsPage() {
   const impressions = getStoriesByCategory("IMPRESSIONS");
@@ -12,7 +10,7 @@ export default function ImpressionsPage() {
   const otherImpressions = impressions.slice(1);
 
   return (
-    <div className="editorial-wrap py-10 lg:py-16 space-y-12">
+    <div className="category-page category-impressions editorial-wrap py-10 lg:py-16 space-y-12">
       {/* Page Title */}
       <div>
         <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#BEF264] flex items-center gap-2 mb-2">
@@ -23,7 +21,7 @@ export default function ImpressionsPage() {
           First Impressions & Field Reports<span className="text-[#BEF264]">.</span>
         </h1>
         <p className="text-sm sm:text-base text-[#A1A1AA] max-w-2xl mt-2 leading-relaxed">
-          Pre-release testing, early access deep-dives, controller ergonomics, and atmospheric initial hours.
+          Published impressions and speculative design notebooks. Source notes link to the original coverage; fictional concepts are labeled as samples.
         </p>
       </div>
 
@@ -64,7 +62,7 @@ export default function ImpressionsPage() {
               </p>
 
               <div className="flex items-center justify-between pt-4 border-t border-[#2B3038]/80 text-xs text-[#A1A1AA]">
-                <span>TESTED BY {leadImpression.author.name.toUpperCase()}</span>
+                <span>BY {leadImpression.author.name.toUpperCase()}</span>
                 <Link
                   href={`/articles/${leadImpression.slug}`}
                   className="px-5 py-2.5 bg-[#BEF264] text-[#0B0D10] hover:bg-[#d5f88b] rounded-lg text-xs font-bold tracking-wider uppercase transition-colors flex items-center gap-1"
@@ -90,7 +88,7 @@ export default function ImpressionsPage() {
                 <Artwork story={story} aspectRatio="aspect-[16/10]" />
               </Link>
               <div className="absolute top-3 left-3 bg-[#0B0D10]/80 backdrop-blur-sm px-2.5 py-1 rounded text-[10px] font-mono text-[#BEF264] border border-[#2B3038]">
-                EARLY ACCESS
+                CONCEPT NOTE
               </div>
               <div className="absolute top-3 right-3 z-10">
                 <BookmarkButton storyId={story.id} size={15} />

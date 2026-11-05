@@ -1,9 +1,9 @@
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import { BookmarkProvider } from "@/context/BookmarkContext";
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import { BookmarkProvider } from "@/context/BookmarkContext";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,6 +24,7 @@ export const metadata: Metadata = {
   },
   description:
     "A premium digital publication with independent perspectives on games, their creators, and the virtual worlds we get lost in.",
+  robots: { index: false, follow: false },
   keywords: [
     "Gaming Journalism",
     "Game Reviews",
@@ -54,6 +55,7 @@ export default function RootLayout({
           <div className="flex flex-col min-h-screen">
             <Header />
             <main id="main-content" className="flex-1">
+              <div className="prototype-note editorial-wrap"><span>Design preview</span> Published reading notes are credited. Other stories, scores and people are fictional samples.</div>
               {children}
             </main>
             <Footer />

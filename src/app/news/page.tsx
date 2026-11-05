@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { Clock, Filter, ArrowUpRight, Flame, SlidersHorizontal } from "lucide-react";
-import { getStoriesByCategory, getTrendingStories } from "@/data/stories";
-import { SectionTitle, Label, BookmarkButton } from "@/components/ui/editorial";
 import { ArticleCard } from "@/components/articles/ArticleCard";
+import { BookmarkButton } from "@/components/ui/editorial";
+import { getStoriesByCategory, getTrendingStories } from "@/data/stories";
+import { ArrowUpRight, Clock, Flame, SlidersHorizontal } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function NewsPage() {
   const allNews = getStoriesByCategory("NEWS");
@@ -14,7 +14,7 @@ export default function NewsPage() {
   const [topicFilter, setTopicFilter] = useState<string>("ALL");
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
   const [page, setPage] = useState(1);
-  const itemsPerPage = 4;
+  const itemsPerPage = 2;
 
   const topics = ["ALL", "Hardware", "Preservation", "Open Source", "Industry"];
 
@@ -40,18 +40,18 @@ export default function NewsPage() {
   const leadStory = sortedNews[0];
 
   return (
-    <div className="editorial-wrap py-10 lg:py-16 space-y-12">
+    <div className="category-page category-news editorial-wrap py-10 lg:py-16 space-y-12">
       {/* Header */}
       <div>
         <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#BEF264] flex items-center gap-2 mb-2">
-          <span className="w-2 h-2 rounded-full bg-[#BEF264] animate-ping" />
+          <span className="w-2 h-2 rounded-full bg-[#BEF264]" />
           DISPATCH WIRE
         </span>
         <h1 className="text-4xl sm:text-5xl font-extrabold text-[#F5F5F4] tracking-tight">
           Gaming News & Analysis<span className="text-[#BEF264]">.</span>
         </h1>
         <p className="text-sm sm:text-base text-[#A1A1AA] max-w-2xl mt-2 leading-relaxed">
-          Critical coverage of industry policies, legal preservation, hardware breakthroughs, and creative movements.
+          A sample news desk exploring hardware, preservation and development tools. These briefs are reporting concepts, not announcements or verified news reports.
         </p>
       </div>
 
@@ -62,10 +62,10 @@ export default function NewsPage() {
             <div className="space-y-3 max-w-3xl">
               <div className="flex items-center gap-3">
                 <span className="bg-[#BEF264] text-[#0B0D10] text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded">
-                  HEADLINE REPORT
+                  LEAD BRIEF
                 </span>
                 <span className="text-xs text-[#A1A1AA] flex items-center gap-1 font-mono">
-                  <Clock size={12} /> FILED {leadStory.publishedAt}
+                  <Clock size={12} /> SAMPLE · {leadStory.publishedAt}
                 </span>
               </div>
 
@@ -110,6 +110,7 @@ export default function NewsPage() {
               {topics.map((t) => (
                 <button
                   key={t}
+                  aria-pressed={topicFilter === t}
                   type="button"
                   onClick={() => {
                     setTopicFilter(t);
@@ -129,6 +130,7 @@ export default function NewsPage() {
             <div className="flex items-center gap-2 text-xs text-[#A1A1AA] shrink-0 self-end sm:self-auto">
               <SlidersHorizontal size={14} />
               <select
+                aria-label="Sort news"
                 value={sortOrder}
                 onChange={(e) => {
                   setSortOrder(e.target.value as "newest" | "oldest");
@@ -150,7 +152,7 @@ export default function NewsPage() {
               ))
             ) : (
               <div className="py-16 text-center text-[#A1A1AA] bg-[#15191F]/40 rounded-lg border border-[#2B3038]">
-                <p className="text-base font-semibold">No news items found under "{topicFilter}".</p>
+                <p className="text-base font-semibold">No news items found under &quot;{topicFilter}&quot;.</p>
                 <button
                   type="button"
                   onClick={() => setTopicFilter("ALL")}
@@ -195,7 +197,7 @@ export default function NewsPage() {
           <div className="bg-[#15191F] border border-[#2B3038] rounded-xl p-6">
             <h3 className="text-sm font-bold uppercase tracking-wider text-[#F5F5F4] flex items-center gap-2 mb-4 pb-3 border-b border-[#2B3038]">
               <Flame size={16} className="text-[#BEF264]" />
-              Trending Discussions
+              Selected Reading
             </h3>
             <div className="divide-y divide-[#2B3038]/60">
               {trending.map((story, i) => (

@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { Bookmark, Trash2, ArrowRight, Clock, BookOpen } from "lucide-react";
+import { ArticleCard } from "@/components/articles/ArticleCard";
 import { useBookmarks } from "@/context/BookmarkContext";
 import { stories } from "@/data/stories";
-import { ArticleCard } from "@/components/articles/ArticleCard";
+import { ArrowRight, Bookmark, BookOpen, Clock, Trash2 } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function SavedPage() {
-  const { bookmarks, removeBookmark, clearBookmarks, mounted } = useBookmarks();
+  const { bookmarks, clearBookmarks, mounted, persistent } = useBookmarks();
   const [confirmClear, setConfirmClear] = useState(false);
 
   // Retrieve story objects matching saved IDs
@@ -29,7 +29,7 @@ export default function SavedPage() {
   }
 
   return (
-    <div className="editorial-wrap py-10 lg:py-16 space-y-10">
+    <div className="category-page category-saved editorial-wrap py-10 lg:py-16 space-y-10">
       {/* Page Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[#2B3038]">
         <div>
@@ -41,7 +41,7 @@ export default function SavedPage() {
             Saved Reading List<span className="text-[#BEF264]">.</span>
           </h1>
           <p className="text-sm text-[#A1A1AA] max-w-xl mt-2 leading-relaxed">
-            Stories and investigations persisted locally on your device for distraction-free offline reading.
+            Bookmarks are saved in this browser on this device. An internet connection is needed to open articles; saving a link does not download it.
           </p>
         </div>
 
@@ -90,6 +90,7 @@ export default function SavedPage() {
         )}
       </div>
 
+      {!persistent && <p role="status">Browser storage is unavailable. This reading list lasts only for this visit.</p>}
       {/* Saved Articles List or Empty State */}
       {savedStories.length > 0 ? (
         <div className="space-y-4">
@@ -106,7 +107,7 @@ export default function SavedPage() {
             Your reading list is empty
           </h2>
           <p className="text-sm text-[#A1A1AA] leading-relaxed max-w-md mx-auto">
-            Bookmark interesting essays, verified game reviews, or developer interviews as you explore to save them here for later.
+            Bookmark interesting essays, game reviews, or developer interviews as you explore to save them here for later.
           </p>
           <div className="pt-4 flex flex-wrap justify-center gap-3">
             <Link

@@ -1,10 +1,9 @@
-"use client";
+import { StoryStatus } from "@/components/ui/StoryStatus";
 
-import React from "react";
-import Link from "next/link";
-import { ArrowUpRight, Clock, Calendar } from "lucide-react";
+import { Artwork, BookmarkButton, Label } from "@/components/ui/editorial";
 import type { Story } from "@/types";
-import { Artwork, Label, BookmarkButton } from "@/components/ui/editorial";
+import { ArrowUpRight, Clock } from "lucide-react";
+import Link from "next/link";
 
 interface ArticleCardProps {
   story: Story;
@@ -46,7 +45,7 @@ export function ArticleCard({
           </div>
 
           <Link href={href} className="block group-hover:text-[#BEF264] transition-colors">
-            <h3 className="text-lg sm:text-xl font-bold text-[#F5F5F4] leading-snug line-clamp-2">
+            <StoryStatus story={story} /><h3 className="text-lg sm:text-xl font-bold text-[#F5F5F4] leading-snug line-clamp-2">
               {story.title}
             </h3>
           </Link>
@@ -143,7 +142,7 @@ export function ArticleCard({
         </div>
 
         <Link href={href} className="block group-hover:text-[#BEF264] transition-colors mb-2">
-          <h3 className="text-lg font-bold text-[#F5F5F4] leading-snug line-clamp-2">
+          <StoryStatus story={story} /><h3 className="text-lg font-bold text-[#F5F5F4] leading-snug line-clamp-2">
             {story.title}
           </h3>
         </Link>

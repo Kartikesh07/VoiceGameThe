@@ -1,33 +1,46 @@
 "use client";
+import { StoryStatus } from "@/components/ui/StoryStatus";
 
-import React, { useRef } from "react";
-import Link from "next/link";
-import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
+import { Artwork, BookmarkButton, Label } from "@/components/ui/editorial";
 import type { Story } from "@/types";
-import { Artwork, Label, BookmarkButton } from "@/components/ui/editorial";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 export function TrendRail({ stories }: { stories: Story[] }) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [edges, setEdges] = useState({ start: true, end: false });
+  useEffect(() => {
+    const rail = scrollRef.current;
+    if (!rail) return;
+    const update = () => setEdges({ start: rail.scrollLeft <= 1, end: rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 2 });
+    const observer = new ResizeObserver(update);
+    observer.observe(rail);
+    rail.addEventListener("scroll", update, { passive: true });
+    update();
+    return () => { observer.disconnect(); rail.removeEventListener("scroll", update); };
+  }, []);
 
   const scroll = (direction: "left" | "right") => {
     if (!scrollRef.current) return;
-    const distance = 360;
+    const distance = scrollRef.current.firstElementChild?.getBoundingClientRect().width || 320;
     scrollRef.current.scrollBy({
-      left: direction === "left" ? -distance : distance,
-      behavior: "smooth",
+      left: direction === "left" ? -(distance + 20) : distance + 20,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
     });
   };
 
   return (
-    <div className="relative">
+    <div className="trending-rail relative">
       <div className="flex items-center justify-between mb-4">
         <span className="text-xs text-[#A1A1AA] tracking-wider uppercase font-semibold">
-          Curated Editorial Radar · {stories.length} Key Stories
+          Selected reading · {stories.length} Key Stories
         </span>
         <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={() => scroll("left")}
+            disabled={edges.start}
             aria-label="Scroll trending left"
             className="w-8 h-8 rounded-full border border-[#2B3038] bg-[#15191F] flex items-center justify-center text-[#A1A1AA] hover:text-[#BEF264] hover:border-[#BEF264] transition-colors"
           >
@@ -36,6 +49,7 @@ export function TrendRail({ stories }: { stories: Story[] }) {
           <button
             type="button"
             onClick={() => scroll("right")}
+            disabled={edges.end}
             aria-label="Scroll trending right"
             className="w-8 h-8 rounded-full border border-[#2B3038] bg-[#15191F] flex items-center justify-center text-[#A1A1AA] hover:text-[#BEF264] hover:border-[#BEF264] transition-colors"
           >
@@ -57,7 +71,7 @@ export function TrendRail({ stories }: { stories: Story[] }) {
               key={story.id}
               className="group min-w-[280px] sm:min-w-[320px] max-w-[320px] shrink-0 bg-[#15191F]/70 border border-[#2B3038] hover:border-[#BEF264]/40 rounded-lg overflow-hidden flex flex-col snap-start transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="relative">
+              <div className="trending-rail relative">
                 <Link href={href} className="block overflow-hidden">
                   <Artwork story={story} aspectRatio="aspect-[16/10]" />
                 </Link>
@@ -76,7 +90,7 @@ export function TrendRail({ stories }: { stories: Story[] }) {
                 </div>
 
                 <Link href={href} className="block group-hover:text-[#BEF264] transition-colors mb-2">
-                  <h3 className="text-base font-bold text-[#F5F5F4] leading-snug line-clamp-2">
+                  <StoryStatus story={story} /><h3 className="text-base font-bold text-[#F5F5F4] leading-snug line-clamp-2">
                     {story.title}
                   </h3>
                 </Link>

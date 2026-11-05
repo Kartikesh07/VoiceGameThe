@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { BookOpen, Clock, ArrowRight, ArrowUpRight } from "lucide-react";
+import { Artwork, BookmarkButton, Label } from "@/components/ui/editorial";
 import { getStoriesByCategory } from "@/data/stories";
-import { Artwork, Label, BookmarkButton } from "@/components/ui/editorial";
+import { ArrowRight, BookOpen, Clock } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function FeaturesPage() {
   const allFeatures = getStoriesByCategory("FEATURES");
@@ -17,11 +17,11 @@ export default function FeaturesPage() {
     return true;
   });
 
-  const lead = filtered[0] || allFeatures[0];
+  const lead = filtered[0];
   const list = filtered.slice(1);
 
   return (
-    <div className="editorial-wrap py-10 lg:py-16 space-y-12">
+    <div className="category-page category-features editorial-wrap py-10 lg:py-16 space-y-12">
       {/* Header */}
       <div>
         <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#BEF264] flex items-center gap-2 mb-2">
@@ -37,7 +37,7 @@ export default function FeaturesPage() {
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex items-center gap-2 border-b border-[#2B3038] pb-4">
+      <div className="flex flex-wrap items-center gap-2 border-b border-[#2B3038] pb-4">
         <span className="text-xs text-[#A1A1AA] mr-2">Filter Length:</span>
         {[
           { label: "All Essays", value: "ALL" },
@@ -46,6 +46,7 @@ export default function FeaturesPage() {
         ].map((tab) => (
           <button
             key={tab.value}
+                  aria-pressed={readFilter === tab.value}
             type="button"
             onClick={() => setReadFilter(tab.value as "ALL" | "SHORT" | "LONG")}
             className={`px-3 py-1.5 text-xs font-semibold rounded-full transition-colors cursor-pointer ${
@@ -60,6 +61,7 @@ export default function FeaturesPage() {
       </div>
 
       {/* Lead Feature Split */}
+      {!lead && <p role="status" className="py-12">No essays match this reading length. Choose another length to continue.</p>}
       {lead && (
         <article className="grid grid-cols-1 lg:grid-cols-12 rounded-2xl overflow-hidden border border-[#2B3038] bg-[#15191F] group">
           <div className="lg:col-span-7 relative min-h-[380px] lg:min-h-[500px]">
@@ -90,9 +92,9 @@ export default function FeaturesPage() {
                 </h2>
               </Link>
 
-              {lead.subtitle && (
+              {lead.subtitle && lead.subtitle !== lead.excerpt && (
                 <p className="text-sm font-medium text-[#BEF264] mb-4 italic">
-                  "{lead.subtitle}"
+                  &quot;{lead.subtitle}&quot;
                 </p>
               )}
 

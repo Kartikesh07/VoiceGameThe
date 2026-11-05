@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useBookmarks } from "@/context/BookmarkContext";
+import { searchStories } from "@/data/stories";
+import { ArrowUpRight, Bookmark, Menu, Search, X } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Search, Menu, X, ArrowUpRight, Bookmark } from "lucide-react";
-import { searchStories } from "@/data/stories";
-import { useBookmarks } from "@/context/BookmarkContext";
+import React, { useEffect, useState } from "react";
 
 const navLinks = [
   { name: "News", href: "/news" },
@@ -19,6 +20,7 @@ const navLinks = [
 
 export default function Header() {
   const pathname = usePathname();
+  const reduced = useReducedMotion();
   const router = useRouter();
   const { bookmarks, mounted } = useBookmarks();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,6 +32,7 @@ export default function Header() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
+        setMobileMenuOpen(false);
         setSearchOpen((prev) => !prev);
       }
       if (e.key === "Escape") {
@@ -42,11 +45,39 @@ export default function Header() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Close mobile drawer on route change
-  useEffect(() => {
+  // Reset overlay state as navigation changes, before painting the next route.
+  const [previousPath, setPreviousPath] = useState(pathname);
+  if (previousPath !== pathname) {
+    setPreviousPath(pathname);
     setMobileMenuOpen(false);
     setSearchOpen(false);
-  }, [pathname]);
+  }
+
+  useEffect(() => {
+    if (!searchOpen && !mobileMenuOpen) return;
+    const previous = document.activeElement as HTMLElement | null;
+    const dialog = document.querySelector<HTMLElement>(searchOpen ? '[aria-label="Quick search modal"]' : '[aria-label="Mobile Navigation Drawer"]');
+    const background = Array.from(document.querySelectorAll<HTMLElement>('main, footer, header.sticky'));
+    background.forEach((node) => { node.inert = true; });
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const focusable = () => Array.from(dialog?.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), input') || []);
+    (dialog?.querySelector<HTMLElement>('input') || focusable()[0])?.focus();
+    const trap = (event: KeyboardEvent) => {
+      if (event.key !== "Tab") return;
+      const items = focusable();
+      const first = items[0]; const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    };
+    document.addEventListener("keydown", trap);
+    return () => {
+      background.forEach((node) => { node.inert = false; });
+      document.body.style.overflow = overflow;
+      document.removeEventListener("keydown", trap);
+      previous?.focus();
+    };
+  }, [searchOpen, mobileMenuOpen]);
 
   const searchResults = searchQuery.trim()
     ? searchStories(searchQuery).slice(0, 5)
@@ -75,7 +106,7 @@ export default function Header() {
 
         {/* Desktop Navigation Links */}
         <nav
-          className="hidden xl:flex items-center justify-center gap-1 sm:gap-2 lg:gap-4 h-full flex-1 max-w-4xl"
+          className="hidden xl:flex items-center justify-center gap-1 h-full flex-1 max-w-4xl"
           aria-label="Primary navigation"
         >
           {navLinks.map((link) => {
@@ -87,7 +118,8 @@ export default function Header() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`relative px-3 py-2 text-xs font-semibold tracking-wider transition-colors uppercase h-full flex items-center ${
+                aria-current={isActive ? "page" : undefined}
+                className={`relative px-2 py-2 text-xs font-semibold tracking-wider transition-colors uppercase h-full flex items-center ${
                   isActive
                     ? "text-[#F5F5F4]"
                     : "text-[#A1A1AA] hover:text-[#F5F5F4]"
@@ -95,7 +127,7 @@ export default function Header() {
               >
                 {link.name}
                 {isActive && (
-                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#BEF264] animate-in fade-in duration-200" />
+                  <motion.span layoutId="active-navigation" transition={{ duration: reduced ? 0 : .2 }} className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#BEF264]" />
                 )}
               </Link>
             );
@@ -107,8 +139,9 @@ export default function Header() {
           {/* Quick Search Trigger */}
           <button
             type="button"
-            onClick={() => setSearchOpen(true)}
-            aria-label="Search stories (Press Command+K)"
+            onClick={() => { setMobileMenuOpen(false); setSearchOpen(true); }}
+            aria-label="Search stories (Control or Command K)"
+            aria-haspopup="dialog"
             className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#2B3038] bg-[#15191F]/80 text-[#A1A1AA] hover:text-[#F5F5F4] hover:border-[#BEF264]/50 transition-colors text-xs"
           >
             <Search size={16} />
@@ -158,6 +191,7 @@ export default function Header() {
           aria-label="Mobile Navigation Drawer"
         >
           <div className="space-y-1">
+            <button type="button" onClick={() => setMobileMenuOpen(false)} className="ml-auto flex items-center gap-2 mb-4" aria-label="Close navigation menu">Close <X size={20} /></button>
             <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#BEF264] block mb-3">
               EDITORIAL CATEGORIES
             </span>
@@ -243,7 +277,7 @@ export default function Header() {
                   <Search size={18} className="text-[#A1A1AA]" />
                   <input
                     type="search"
-                    autoFocus
+                    aria-label="Search article titles, topics and authors"
                     placeholder="Search stories, topics, creators, reviews…"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
@@ -306,8 +340,8 @@ export default function Header() {
                     </div>
                   ) : (
                     <div className="text-center py-8 text-[#A1A1AA]">
-                      <p className="text-sm">No stories found matching "{searchQuery}"</p>
-                      <p className="text-xs mt-1">Try searching for "worldbuilding", "review", or "engine".</p>
+                      <p className="text-sm">No stories found matching &quot;{searchQuery}&quot;</p>
+                      <p className="text-xs mt-1">Try searching for &quot;worldbuilding&quot;, &quot;review&quot;, or &quot;engine&quot;.</p>
                     </div>
                   )}
                 </div>

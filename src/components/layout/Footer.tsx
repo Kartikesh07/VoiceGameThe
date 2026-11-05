@@ -1,20 +1,6 @@
-"use client";
-
-import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Camera, Video } from "lucide-react";
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email && email.includes("@")) {
-      setSubscribed(true);
-    }
-  };
-
   return (
     <footer className="border-t border-[#2B3038] bg-[#080A0D] text-[#A1A1AA] mt-24">
       {/* Newsletter Dispatch Banner */}
@@ -29,49 +15,16 @@ export default function Footer() {
               Stay ahead of<br />the conversation<span className="text-[#719A32]">.</span>
             </h2>
             <p className="mt-4 text-sm sm:text-base text-[#464D48] max-w-md leading-relaxed">
-              Thoughtful essays, critical breakdowns, and curated explorations of virtual craft. Delivered weekly without promotional spam.
+              Thoughtful essays, critical breakdowns, and curated explorations of virtual craft. A space for a future editorial newsletter.
             </p>
           </div>
 
           <div className="lg:pl-8">
-            {subscribed ? (
-              <div className="bg-[#D9DDD3] border border-[#BAC1B2] rounded-xl p-6 flex items-center gap-4 text-[#111814] animate-in fade-in">
-                <CheckCircle2 size={24} className="text-[#4C612D] shrink-0" />
-                <div>
-                  <h4 className="font-bold text-sm">Welcome to the Dispatch.</h4>
-                  <p className="text-xs text-[#525B54] mt-0.5">
-                    We've saved your address for the next editorial issue.
-                  </p>
-                </div>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-3">
-                <label htmlFor="newsletter-email" className="sr-only">
-                  Email address for newsletter
-                </label>
-                <div className="flex flex-col sm:flex-row items-stretch gap-2 bg-[#FAFBF9] border border-[#BAC1B2] rounded-xl p-1.5 focus-within:ring-2 focus-within:ring-[#4C612D] transition-all">
-                  <input
-                    id="newsletter-email"
-                    type="email"
-                    required
-                    placeholder="Enter your email address…"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="flex-1 px-4 py-3 bg-transparent text-[#111814] placeholder-[#79827B] text-sm focus:outline-none"
-                  />
-                  <button
-                    type="submit"
-                    className="px-6 py-3 bg-[#111814] text-[#F5F5F4] hover:bg-[#202722] rounded-lg text-xs font-extrabold tracking-wider uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer"
-                  >
-                    <span>Subscribe</span>
-                    <ArrowRight size={14} />
-                  </button>
-                </div>
-                <p className="text-[11px] text-[#636C65]">
-                  No marketing bloat. Instant unsubscribe anytime.
-                </p>
-              </form>
-            )}
+            <div className="border-t border-[#BAC1B2] pt-6">
+              <span className="text-xs uppercase tracking-widest font-bold text-[#465336]">Newsletter · not connected</span>
+              <p className="text-sm text-[#464D48] mt-3 mb-5">Subscriptions are unavailable in this prototype. Explore the archive or save a story for your next visit.</p>
+              <Link href="/features" className="inline-flex min-h-11 items-center px-5 bg-[#111814] text-[#F5F5F4] text-sm font-bold">Explore the essays →</Link>
+            </div>
           </div>
         </div>
       </div>
@@ -94,7 +47,7 @@ export default function Footer() {
             <span className="text-[10px] font-mono tracking-widest text-[#BEF264] bg-[#15191F] px-2.5 py-1 rounded border border-[#2B3038]">
               EST. FOR THE CURIOUS
             </span>
-            <span className="text-[10px] text-[#A1A1AA]">· ISSUE 2026.10</span>
+            <span className="text-[10px] text-[#A1A1AA]">· DESIGN PREVIEW</span>
           </div>
         </div>
 
@@ -184,13 +137,13 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-[#2B3038] py-6 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-semibold text-[#A1A1AA] tracking-wider uppercase">
-        <p>© 2026 THEGAMEVOICE. ALL EDITORIAL CONTENT CURATED FOR THE LOVE OF PLAY.</p>
+        <p>© 2026 THEGAMEVOICE. EDITORIAL DESIGN PROTOTYPE.</p>
         <div className="flex items-center gap-6">
           <span className="flex items-center gap-1.5 text-[#BEF264]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#BEF264] animate-pulse" />
-            LIVE EDITORIAL PROTOTYPE
+            <span className="w-1.5 h-1.5 rounded-full bg-[#BEF264]" />
+            LOCAL EDITORIAL PROTOTYPE
           </span>
-          <span className="text-[#F5F5F4]/60">ART DIRECTION BY TGVOICE</span>
+          <span className="text-[#F5F5F4]/60">ORIGINAL ILLUSTRATIVE ARTWORK</span>
         </div>
       </div>
     </footer>

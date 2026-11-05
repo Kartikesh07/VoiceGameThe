@@ -1,801 +1,1063 @@
 import type { Story, Category } from "@/types";
 
+// Published reading notes link to their sources. All other entries are explicit samples.
 export const stories: Story[] = [
-  // 1. FEATURES - HERO
   {
-    id: "story-1",
-    slug: "the-worlds-we-lose-ourselves-in",
-    category: "FEATURES",
-    title: "The worlds we lose ourselves in",
-    subtitle: "What makes a game world stay with us long after we put down the controller?",
-    excerpt: "Exploring the fragile alchemy of environmental storytelling, sound architecture, and memory in modern interactive worlds.",
-    coverImage: "/worlds.png",
-    alt: "Illustration of an explorer overlooking a vast monolithic ruined valley at twilight",
-    author: {
-      name: "The Editorial Team",
-      role: "Features Desk",
-      avatar: "ET",
+    "id": "story-1",
+    "slug": "the-worlds-we-lose-ourselves-in",
+    "category": "FEATURES",
+    "title": "The worlds we lose ourselves in",
+    "subtitle": "Why a remembered path can matter more than a map full of objectives.",
+    "excerpt": "Why a remembered path can matter more than a map full of objectives.",
+    "coverImage": "/worlds.png",
+    "alt": "Editorial illustration for The worlds we lose ourselves in; not a screenshot",
+    "author": {
+      "name": "Prototype desk",
+      "role": "Demonstration content",
+      "avatar": "PD"
     },
-    publishedAt: "2026-10-28",
-    readTime: "8 MIN READ",
-    featured: true,
-    trending: true,
-    tags: ["Worldbuilding", "Philosophy", "Architecture", "Immersion"],
-    content: {
-      lead: "Long after the credits roll, the boss patterns fade, and the muscle memory atrophies, something stranger remains: the phantom geography of spaces that exist only in code.",
-      paragraphs: [
+    "publishedAt": "2026-10-28",
+    "readTime": "7 MIN READ",
+    "featured": true,
+    "trending": true,
+    "tags": [
+      "Worldbuilding",
+      "Philosophy",
+      "Architecture",
+      "Immersion"
+    ],
+    "content": {
+      "lead": "Long after the credits roll, the boss patterns fade, and the muscle memory atrophies, something stranger remains: the phantom geography of spaces that exist only in code.",
+      "paragraphs": [
         "We can recall the exact angle of late afternoon light cutting through the collapsed nave of a crumbling cathedral in Lothric. We remember the distinct, muffled echo of boots sinking into wet peat on the outskirts of Novigrad, or the quiet hum of a fusion reactor nestled inside an orbital airlock thousands of kilometers above a cobalt alien sea.",
-        "Why do digital spaces occupy the same neurological real estate as childhood bedrooms, ancestral landscapes, and real cities we once walked through? In gaming criticism, we often discuss mechanics, frame rates, and narrative pacing. Yet the highest achievement of interactive media may simply be spatial memory—the art of building architectures of resonance.",
-        "Unlike cinema, which frames perspective through an unyielding lens, games demand our co-presence. When we navigate a ruined corridor or stand atop an alpine precipice, the world does not merely perform for us; it waits on our volition. Every shadow cast across the damp stone is an invitation to inhabit.",
+        "Why can a digital place feel as familiar as a street we once walked? Criticism often concentrates on mechanics, frame rates and narrative pacing. Yet the shape of a place, and the freedom to find our own way through it, can stay with us just as strongly.",
+        "Unlike cinema, which frames perspective through an unyielding lens, games demand our co-presence. When we navigate a ruined corridor or stand atop an alpine precipice, the world does not merely perform for us; it waits on our volition. Every shadow cast across the damp stone is an invitation to inhabit."
       ],
-      pullQuote: {
-        quote: "The highest achievement of interactive media isn't photorealism—it is spatial memory. The quiet art of building places that welcome our curiosity.",
-        attribution: "Editorial Journal, Issue 04",
+      "pullQuote": {
+        "quote": "The highest achievement of interactive media isn't photorealism—it is spatial memory. The quiet art of building places that welcome our curiosity.",
+        "attribution": "From this demonstration essay"
       },
-      subsections: [
+      "subsections": [
         {
-          heading: "The Architecture of Subtraction",
-          paragraphs: [
+          "heading": "The Architecture of Subtraction",
+          "paragraphs": [
             "Modern game design often suffers from horror vacui—the fear of empty space. Open-world maps groan under the weight of hundreds of icons, waypoints, and relentless procedural chores. But the landscapes that truly carve themselves into our consciousness are almost invariably defined by what the designers chose to withhold.",
-            "Consider the quiet windswept stretches of Fumito Ueda's Shadow of the Colossus, or the desolate salt flats of Journey. In these worlds, silence is not an absence of content; it is a structural pillar. Without the constant chatter of navigational UI, the player is forced to listen to the topography itself.",
+            "Consider the quiet windswept stretches of Fumito Ueda's Shadow of the Colossus, or the desolate salt flats of Journey. In these worlds, silence is not an absence of content; it is a structural pillar. Without the constant chatter of navigational UI, the player is forced to listen to the topography itself."
           ],
-          image: "/images/ancient-ruins.svg",
-          imageCaption: "Monolithic remnants: when scale and silence combine to evoke forgotten histories.",
+          "image": "/images/ancient-ruins.svg",
+          "imageCaption": "Monolithic remnants: when scale and silence combine to evoke forgotten histories."
         },
         {
-          heading: "Sound as Atmospheric Weight",
-          paragraphs: [
+          "heading": "Sound as Atmospheric Weight",
+          "paragraphs": [
             "We experience space with our ears long before our eyes synthesize the geometry. A low subterranean rumble that vibrates just below conscious perception; the metallic clink of a carabiner against cold rock; the subtle Doppler shift of rain against glass.",
-            "When audio directors treat reverberation not as an effect but as an environmental texture, digital worlds gain physical weight. They cease to feel like textured polygons and begin to breathe like genuine habitats.",
-          ],
+            "When audio directors treat reverberation not as an effect but as an environmental texture, digital worlds gain physical weight. They cease to feel like textured polygons and begin to breathe like genuine habitats."
+          ]
         },
-      ],
-    },
-  },
-
-  // 2. IMPRESSIONS
-  {
-    id: "story-2",
-    slug: "a-quieter-kind-of-adventure",
-    category: "IMPRESSIONS",
-    title: "A quieter kind of adventure is finding its voice",
-    subtitle: "On the small moments that make imaginary worlds feel genuinely real.",
-    excerpt: "After ten hours with upcoming orbital explorer Celestial Drift, we examine why silence, routine, and solitude hit harder than any scripted set piece.",
-    coverImage: "/orbit.png",
-    alt: "Illustration of an astronaut gazing through a station viewport at an azure planet",
-    author: {
-      name: "Devin Mercer",
-      role: "Contributing Editor",
-      avatar: "DM",
-    },
-    publishedAt: "2026-10-29",
-    readTime: "6 MIN READ",
-    featured: true,
-    trending: true,
-    tags: ["Hands-On", "Sci-Fi", "Indie", "Atmosphere"],
-    content: {
-      lead: "There are no lasers fired in Celestial Drift. There are no pirate fleets emerging from warp space to rattle your shield generators.",
-      paragraphs: [
-        "Instead, the game begins with a mundane ritual: checking the oxygen seals on your EVA suit, monitoring the heat sinks on the solar array, and aligning an antenna array toward a transmission beacon that may have fallen silent thirty years ago.",
-        "Developed by a three-person Scandinavian team over five years, this orbital exploration title embraces slow-burn tactile realism. Every switch inside your retrofitted command pod requires a physical click; every thruster burn consumes precious monopropellant that must be accounted for in handwritten flight logs.",
-        "The result is hypnotic. By stripping away artificial urgency, the game restores a sense of cosmic grandeur that big-budget space operas so frequently overlook.",
-      ],
-      pullQuote: {
-        quote: "True adventure isn't always explosions and apocalyptic stakes. Sometimes it is the click of a relay switch in absolute darkness.",
-        attribution: "Devin Mercer, Early Hands-On",
-      },
-      subsections: [
         {
-          heading: "Tactile Systems & Physicality",
-          paragraphs: [
-            "What immediately distinguishes the experience is its physical simulation. You do not push an analog stick to glide effortlessly through space. In zero gravity, momentum is both your ally and your greatest hazard. Docking with a tumbling relay station becomes an exercise in breath control and mathematical precision.",
-          ],
-          image: "/images/space-station.svg",
-          imageCaption: "Manual orbital rendezvous: precision navigation around abandoned communications relays.",
+          "heading": "The journey back",
+          "paragraphs": [
+            "A return journey is an unusually revealing design test. On the first visit, a corridor is a sequence of unknowns. On the second, it becomes a route. We anticipate the turn, recognise the light under a doorway and decide whether to take a familiar shortcut. A space has become part of our own vocabulary.",
+            "That familiarity can change without the geometry changing at all. An empty room feels different after we understand who used it. A courtyard crossed in safety becomes a different place when we are carrying something fragile. The meaning of the route comes from the situation and from what we remember bringing through it.",
+            "This is one reason a carefully arranged small world can feel more expansive than a much larger map. Connections accumulate significance. A distant balcony, first seen from below, offers a new understanding of the street when we finally reach it. The pleasure is not simply unlocking another area; it is discovering how the pieces belong together.",
+            "Fast travel is useful, especially when a route has stopped asking anything interesting of us. But it also changes the relationship between places. A destination selected from a menu is a point in an interface. A destination reached by following a river, taking shelter and choosing a pass has a position in a remembered landscape. Neither approach is always right; each gives the journey a different role."
+          ]
         },
-      ],
-    },
-  },
-
-  // 3. DEVELOPMENT
-  {
-    id: "story-3",
-    slug: "inside-the-art-of-building-worlds-that-feel-alive",
-    category: "DEVELOPMENT",
-    title: "Inside the art of building worlds that feel alive",
-    subtitle: "The ideas, craft, and technical pipelines behind the places we play.",
-    excerpt: "Technical directors and environment artists break down how subtle systemic behaviors transform static game geometry into breathing ecosystems.",
-    coverImage: "/images/studio-dev.svg",
-    alt: "Game developer workstation with dual monitors running engine viewport and code",
-    author: {
-      name: "Marcus Thorne",
-      role: "Technical Editor",
-      avatar: "MT",
-    },
-    publishedAt: "2026-10-27",
-    readTime: "9 MIN READ",
-    featured: true,
-    trending: false,
-    tags: ["Tech", "Game Engine", "Level Design", "Art Direction"],
-    content: {
-      lead: "Ask any veteran environment artist about the most difficult problem in contemporary game design, and they won't talk about polygon budgets or ray-traced reflections.",
-      paragraphs: [
-        "They will talk about believable inconsistency. Nature is never uniform; it is messy, eroded, layered with competing microclimates, and scarred by uncounted centuries of wind and water. When an algorithm generates terrain, our eyes subconsciously detect the mathematical periodicity.",
-        "To combat this uncanny sterile perfection, modern studios are developing hybrid pipelines that combine deterministic procedural generation with artisan-level manual sculpting.",
-        "In this deep dive, we speak with technical directors across three independent studios who are pushing systemic worldbuilding beyond static set dressing into responsive ecological systems.",
-      ],
-      subsections: [
         {
-          heading: "The Micro-Climates of Unreal Engine 5",
-          paragraphs: [
-            "By tying weather shaders directly to soil saturation and wind velocity maps, foliage no longer simply oscillates in a uniform loop. Leaves curl in humidity, mud churns under weight, and moisture recedes along natural gravitational lines.",
-          ],
+          "heading": "A world at the edge of the frame",
+          "paragraphs": [
+            "Environmental storytelling is often discussed as a collection of clues. Place an object beside another object and a player may infer an event. But an environment can also communicate through ordinary arrangements that do not hide a mystery. A bench facing a view suggests that someone once valued the view. A repaired wall suggests that a place was worth maintaining.",
+            "These details work because they do not all point toward a reward. If every unusual object hides a collectible, curiosity can become a search technique. Some objects should simply belong where they are. A room can contain evidence of daily life without requiring the player to solve it.",
+            "The same restraint applies to scale. An enormous structure can create a moment of spectacle, but a smaller inhabited space provides something to measure that spectacle against. A low ceiling, a handrail or a chair gives the body a point of reference. The monumental becomes legible through the ordinary.",
+            "There is also room for an unresolved edge. A path that disappears into a landscape can suggest a wider world without promising a future quest. The distinction needs care: a repeatedly highlighted locked gate feels like an instruction. A distant road, seen only as part of a view, can remain a possibility. The art is in communicating which kind of invitation the player is receiving."
+          ]
         },
-      ],
-    },
-  },
-
-  // 4. NEWS
-  {
-    id: "story-4",
-    slug: "the-next-chapter-of-play-taking-shape",
-    category: "NEWS",
-    title: "The next chapter of play is already taking shape",
-    subtitle: "A closer look at the experimental hardware and design philosophies moving games forward.",
-    excerpt: "From open-source physical controllers to haptic tactile feedback experiments, a wave of creator-led initiatives is challenging industry stagnation.",
-    coverImage: "/images/retro-console.svg",
-    alt: "Retro-futuristic CRT screen displaying vector graphics and hardware telemetry",
-    author: {
-      name: "Sarah Chen",
-      role: "Senior News Reporter",
-      avatar: "SC",
-    },
-    publishedAt: "2026-10-31",
-    readTime: "4 MIN READ",
-    featured: false,
-    trending: true,
-    tags: ["Industry", "Hardware", "Innovation", "Open Source"],
-    content: {
-      lead: "At this year's Alternative Controller Showcase, the most exciting gaming hardware wasn't an eight-hundred-dollar GPU or an all-in-one VR headset.",
-      paragraphs: [
-        "It was a rotary crank telephone wired into a text parser, a mechanical telegraph key used to navigate a subterranean horror sim, and a custom pneumatic flight yoke that resists movement based on simulated atmospheric density.",
-        "While mainstream console manufacturers continue an iterative race toward incremental resolution bumps, grassroots hardware developers are proving that physical tactile connection remains the most potent frontier of immersion.",
-        "Several major indie collectives announced joint open-source specifications this week, standardizing haptic telemetry APIs across Linux, PC, and custom microcontroller peripherals.",
-      ],
-    },
-  },
-
-  // 5. REVIEWS - SPOTLIGHT 1
-  {
-    id: "story-5",
-    slug: "chrono-shift-echoes-of-eternity-review",
-    category: "REVIEWS",
-    title: "Chrono Shift: When exploration becomes the whole story",
-    subtitle: "Finding wonder in the spaces between traditional narrative objectives.",
-    excerpt: "A masterclass in non-linear environmental investigation that trusts the player's intelligence from the very first frame.",
-    coverImage: "/images/ancient-ruins.svg",
-    alt: "Ethereal ancient monoliths glowing in twilight fog with a solitary explorer",
-    author: {
-      name: "Julian Vance",
-      role: "Reviews Lead",
-      avatar: "JV",
-    },
-    publishedAt: "2026-10-26",
-    readTime: "7 MIN READ",
-    featured: false,
-    trending: true,
-    tags: ["Review", "Adventure", "Sci-Fi", "Puzzle"],
-    review: {
-      score: 9.4,
-      verdict: "Essential",
-      gameTitle: "Chrono Shift: Echoes of Eternity",
-      developer: "Aetheric Labs",
-      publisher: "Self-Published",
-      platform: ["PC", "PlayStation 5", "Steam Deck"],
-      releaseDate: "October 2026",
-      playtime: "22 Hours",
-      pros: [
-        "Extraordinary non-handholding environmental puzzle design",
-        "Sublime acoustic score recorded with period instruments",
-        "Intricate temporal mechanics that never feel gimmicky",
-        "Flawless performance on both high-end rigs and Steam Deck",
-      ],
-      cons: [
-        "Late-game travel can occasionally feel mildly tedious",
-        "In-game notebook lacks custom pin coordinates",
-      ],
-      summary: "Chrono Shift is that rarest of gems: an expansive exploration adventure that refuses to patronize its audience with quest markers or incessant companion banter. It is an unforgettable spatial puzzle box.",
-    },
-    content: {
-      lead: "Most adventure games treat the player like a tourist following an audio guide through a museum. Chrono Shift treats you like an archaeologist handed a rusted trowel and an unmarked map.",
-      paragraphs: [
-        "Set inside a decaying planetary observatory trapped in a fractured temporal loop, the game presents you with no quest log, no blinking compass pip, and no companion chirping solutions to puzzles before you've even had twenty seconds to observe the room.",
-        "Instead, it constructs a dense tapestry of architectural clues, planetary astronomical charts, and acoustic motifs. To progress, you must actually understand how the ancient mechanism operated.",
-        "The sensation when the pieces finally click into place—not because an icon turned green, but because your mental model of the world matched the designer's intent—is pure, unadulterated euphoria.",
-      ],
-      subsections: [
         {
-          heading: "The Mechanics of Time as Geometry",
-          paragraphs: [
-            "Time travel in games is usually reduced to a rewind button or binary day/night state. Chrono Shift conceptualizes time as physical strata. Stepping through an archway doesn't reload the level; it shifts the structural degradation of the stone around you in real time.",
-          ],
+          "heading": "What we choose to remember",
+          "paragraphs": [
+            "A memorable world does not require a single correct response. One player may remember a difficult climb; another may remember the resting place before it. Both have formed a relationship with the same environment through different moments of attention. Design can make those moments possible without dictating which one must matter most.",
+            "This changes how we might talk about discovery. Finding a landmark is one kind of discovery, but learning to recognise it in changing weather is another. Knowing where a path leads is useful; knowing when we would prefer to take it is more personal. A world starts to feel inhabited when it supports choices that exceed the immediate objective.",
+            "There are practical questions behind that feeling. Can a player orient themselves after returning from a break? Does the lighting direct attention without washing away the character of a room? Are the sounds of adjoining spaces distinct enough to help with navigation? These are not separate from atmosphere. They are ways of making atmosphere available to the person moving through it.",
+            "Perhaps the worlds that stay with us are the ones that allow us to build a small life inside their rules. We learn a route, develop a habit, choose a place to stop. Long after the task is complete, that remembered choice remains. The screen goes dark, but we can still imagine the way home."
+          ]
         },
-      ],
-    },
-  },
-
-  // 6. FEATURES
-  {
-    id: "story-6",
-    slug: "why-the-best-game-stories-leave-room-for-us",
-    category: "FEATURES",
-    title: "Why the best game stories leave room for us",
-    subtitle: "A meditation on discovery, imagination, and making meaning through play.",
-    excerpt: "Why overly scripted cinematic games often evaporate from memory, while games with narrative ambiguity remain alive forever.",
-    coverImage: "/images/virtual-reality.svg",
-    alt: "Abstract neural lattice and luminous data nodes against a deep obsidian background",
-    author: {
-      name: "The Editorial Team",
-      role: "Features Desk",
-      avatar: "ET",
-    },
-    publishedAt: "2026-10-25",
-    readTime: "5 MIN READ",
-    featured: false,
-    trending: false,
-    tags: ["Narrative", "Game Design", "Essay"],
-    content: {
-      lead: "There is an old theatrical adage: tell the audience what to feel, and they will resist; create an empty space, and they will rush in to fill it.",
-      paragraphs: [
-        "In video games, this dynamic is amplified tenfold. The medium's greatest strength is not its capacity to mimic Hollywood cinematography, but its unique ability to foster emergent psychological ownership.",
-        "When a narrative leaves gaps—unexplained ruins, fragmented diary entries, ambiguous character motivations—our human mind becomes an active co-author. We furnish the silence with our own hopes, fears, and interpretations.",
-        "From Dark Souls to Kentucky Route Zero, the works that have endured the longest are precisely those that declined to explain every hinge and bolt in their narrative machinery.",
-      ],
-    },
-  },
-
-  // 7. DEVELOPMENT - INDIA SPOTLIGHT
-  {
-    id: "story-7",
-    slug: "indian-studios-finding-their-voice",
-    category: "DEVELOPMENT",
-    title: "A new generation of Indian studios is finding its voice",
-    subtitle: "Exploring the creative energy, cultural storytelling, and technical ambition shaping a thriving ecosystem.",
-    excerpt: "From Bengaluru and Pune to New Delhi, independent game creators are moving past mobile outsourcing to author globally recognized original IP.",
-    coverImage: "/worlds.png",
-    alt: "Cinematic mountain landscape with ancient architectural temples and glowing evening light",
-    author: {
-      name: "Arjun Nambiar",
-      role: "Contributing Editor, South Asia",
-      avatar: "AN",
-    },
-    publishedAt: "2026-10-24",
-    readTime: "10 MIN READ",
-    featured: true,
-    trending: true,
-    tags: ["Indian Gaming", "Indie Dev", "Studio Spotlight", "Culture"],
-    content: {
-      lead: "For two decades, the global gaming conversation around India was confined to one narrative: outsourcing. Thousands of talented artists and QA engineers contributed to Western blockbusters without their names ever fronting original titles.",
-      paragraphs: [
-        "That era has decisively closed. Today, a new generation of Indian studios is leveraging cutting-edge Unreal Engine 5 workflows, indigenous folklore, contemporary urban aesthetics, and bold systemic design to create games that command the world's attention.",
-        "Studios like Mandala Interactive and Nodding Heads are demonstrating that Indian cultural heritage is not a superficial coat of paint, but a rich repository of non-Western narrative structures, musical traditions, and philosophical questions.",
-        "'We spent years animating other people's myths,' says lead designer Vikram Sethi. 'Now we have the confidence and the technical maturity to articulate our own world on our own terms.'",
-      ],
-      subsections: [
         {
-          heading: "Beyond Mythological Tropes",
-          paragraphs: [
-            "What makes this wave distinct is its stylistic diversity. Alongside epics rooted in ancient Sanskrit mythology are neon-drenched cyberpunk detective stories set in a rain-soaked Mumbai, pastoral slice-of-life narratives set in Kerala backwaters, and intense multiplayer tactical shooters built from the ground up for low-latency subcontinent networks.",
-          ],
-        },
-      ],
+          "heading": "Making room for different readers",
+          "paragraphs": [
+            "The invitation to inhabit a place should also be an invitation to understand it. A world that relies on colour alone to distinguish routes may lose some of its clarity for players who see those colours differently. A world that hides essential information in a quiet sound may need another way to communicate the same event. Options for subtitles, contrast and navigation assistance can support the atmosphere by letting more people take part in it.",
+            "Restraint should not become a reason to withhold help. The player who chooses a clearer route marker is still exploring, making decisions and finding moments that matter to them. The most generous environments can accommodate both the person who wants to become lost for an afternoon and the person who has only a short time to find their way. What matters is the quality of the relationship that develops, not how little assistance a player can manage without."
+          ]
+        }
+      ]
     },
+    "editorialStatus": "demonstration",
+    "artworkCredit": "Original prototype illustration · not game footage"
   },
-
-  // 8. INTERVIEWS - SPOTLIGHT 1
   {
-    id: "story-8",
-    slug: "the-people-behind-the-places-we-remember",
-    category: "INTERVIEWS",
-    title: "The people behind the places we remember",
-    subtitle: "A conversation about the imagination, craft, and emotional toll of world creation.",
-    excerpt: "Veteran creative director Elena Rostova on designing environments that evoke nostalgia for places the player has never actually visited.",
-    coverImage: "/images/interview-lounge.svg",
-    alt: "Warmly lit minimalist studio interview lounge with modernist architectural seating",
-    author: {
-      name: "Julian Vance",
-      role: "Interviews Editor",
-      avatar: "JV",
+    "id": "story-2",
+    "slug": "a-quieter-kind-of-adventure",
+    "category": "IMPRESSIONS",
+    "title": "Danchi Days and the small rituals of summer",
+    "subtitle": "A reading note from the published TheGameVoice archive.",
+    "excerpt": "Tarishi Singh reflects on childhood nostalgia, neighbourhood connections and sensory minigames in the Danchi Days demo.",
+    "coverImage": "/images/summer-courtyard.svg",
+    "alt": "Editorial illustration for Danchi Days and the small rituals of summer; not a screenshot",
+    "author": {
+      "name": "Tarishi Singh",
+      "role": "Original article author · TheGameVoice",
+      "avatar": "TA"
     },
-    publishedAt: "2026-10-23",
-    readTime: "8 MIN READ",
-    featured: false,
-    trending: true,
-    tags: ["Interview", "Creative Direction", "World Design"],
-    interview: {
-      interviewee: "Elena Rostova",
-      role: "Creative Director",
-      studio: "Ghostlight Works",
-      location: "Stockholm, Sweden",
-      pullQuote: "If a player walks into a room in our game and wants to sit down and do nothing for five minutes, I know we have succeeded.",
+    "publishedAt": "2026-10-28",
+    "readTime": "1 MIN READ",
+    "featured": true,
+    "trending": true,
+    "tags": [
+      "Hands-On",
+      "Sci-Fi",
+      "Indie",
+      "Atmosphere"
+    ],
+    "content": {
+      "lead": "Tarishi Singh reflects on childhood nostalgia, neighbourhood connections and sensory minigames in the Danchi Days demo.",
+      "paragraphs": [
+        "The published impressions piece considers how pixel art and everyday conversations support a story about community and family. The original review also discusses the limits of a demo whose larger story remains unfinished.",
+        "This page is a short, attributed reading note, not a reproduction of the original article. Follow the source link for the complete piece and its original context."
+      ]
     },
-    content: {
-      lead: "Elena Rostova has spent the past fifteen years orchestrating virtual environments that feel less like software and more like tangible, lived-in memories.",
-      paragraphs: [
-        "In this extended interview, we sit down with Rostova at Ghostlight Works to discuss architectural psychology, the transition to real-time global illumination, and how to preserve an auteur vision inside modern multi-disciplinary studio structures.",
-        "'When you design a space,' Rostova explains, 'you aren't just placing geometry and collision meshes. You are staging emotional encounters with time and decay. Every peeling layer of wallpaper tells a story about who lived there before the calamity.'",
+    "editorialStatus": "source-summary",
+    "artworkCredit": "Original prototype illustration · not game footage",
+    "source": {
+      "url": "https://www.thegamevoice.com/article/a-pixelated-postcard-from-a-summer-that-never-really-ends-danchi-days",
+      "publication": "TheGameVoice",
+      "originalTitle": "A Pixelated Postcard from a Summer That Never Really Ends - Danchi Days"
+    }
+  },
+  {
+    "id": "story-3",
+    "slug": "inside-the-art-of-building-worlds-that-feel-alive",
+    "category": "DEVELOPMENT",
+    "title": "Building worlds that feel alive",
+    "subtitle": "A design notebook on the small systems that make a place convincing.",
+    "excerpt": "A design notebook on the small systems that make a place convincing.",
+    "coverImage": "/images/world-systems.svg",
+    "alt": "Editorial illustration for Building worlds that feel alive; not a screenshot",
+    "author": {
+      "name": "Prototype desk",
+      "role": "Demonstration content",
+      "avatar": "PD"
+    },
+    "publishedAt": "2026-10-27",
+    "readTime": "1 MIN READ",
+    "featured": true,
+    "trending": false,
+    "tags": [
+      "Tech",
+      "Game Engine",
+      "Level Design",
+      "Art Direction"
+    ],
+    "content": {
+      "lead": "Believability often begins at the edges of attention: a path worn into grass, a lamp someone has left burning, a room arranged around daily work. These details suggest use rather than decoration.",
+      "paragraphs": [
+        "This editorial sample explores a design idea. It is presented to demonstrate the reading experience and is not published reporting."
       ],
-      subsections: [
+      "subsections": [
         {
-          heading: "On Resisting Fast Pacing",
-          paragraphs: [
-            "Q: The industry often pushes for immediate gratification—action within ten seconds of booting up. Why have you continued to champion slow, meditative openings?",
-            "Rostova: Because speed kills attachment. You cannot love a place you are sprinting through. When we slow the player down, we give them permission to be observant. That observation is where intimacy is born.",
-          ],
+          "heading": "From scenery to systems",
+          "paragraphs": [
+            "Imagine a weather system that changes the route through a valley. The landscape now asks something of the player. Environmental design becomes a conversation between a space and the person moving through it."
+          ]
+        }
+      ]
+    },
+    "editorialStatus": "demonstration",
+    "artworkCredit": "Original prototype illustration · not game footage"
+  },
+  {
+    "id": "story-4",
+    "slug": "the-next-chapter-of-play-taking-shape",
+    "category": "NEWS",
+    "title": "What a different controller could change",
+    "subtitle": "A sample dispatch exploring physical input and the language of play.",
+    "excerpt": "A sample dispatch exploring physical input and the language of play.",
+    "coverImage": "/images/retro-console.svg",
+    "alt": "Editorial illustration for What a different controller could change; not a screenshot",
+    "author": {
+      "name": "Prototype desk",
+      "role": "Demonstration content",
+      "avatar": "PD"
+    },
+    "publishedAt": "2026-10-31",
+    "readTime": "1 MIN READ",
+    "featured": false,
+    "trending": true,
+    "tags": [
+      "Industry",
+      "Hardware",
+      "Innovation",
+      "Open Source"
+    ],
+    "content": {
+      "lead": "A button is a useful abstraction, but it is only one way to make a decision. Turning a crank, balancing an object or holding a lever can make the same virtual action feel very different.",
+      "paragraphs": [
+        "This editorial sample explores a design idea. It is presented to demonstrate the reading experience and is not published reporting."
+      ],
+      "subsections": [
+        {
+          "heading": "Designing around a gesture",
+          "paragraphs": [
+            "This concept asks what happens when an interaction starts with a physical movement. It is a design exercise, not a report about an announced device or industry event."
+          ]
+        }
+      ]
+    },
+    "editorialStatus": "demonstration",
+    "artworkCredit": "Original prototype illustration · not game footage"
+  },
+  {
+    "id": "story-5",
+    "slug": "chrono-shift-echoes-of-eternity-review",
+    "category": "REVIEWS",
+    "title": "Chrono Shift: reading the ruins",
+    "subtitle": "An example review of a fictional exploration game. All scores and game details are sample data.",
+    "excerpt": "An example review of a fictional exploration game. All scores and game details are sample data.",
+    "coverImage": "/images/ancient-ruins.svg",
+    "alt": "Editorial illustration for Chrono Shift: reading the ruins; not a screenshot",
+    "author": {
+      "name": "Prototype desk",
+      "role": "Demonstration content",
+      "avatar": "PD"
+    },
+    "publishedAt": "2026-10-26",
+    "readTime": "1 MIN READ",
+    "featured": false,
+    "trending": true,
+    "tags": [
+      "Review",
+      "Adventure",
+      "Sci-Fi",
+      "Puzzle"
+    ],
+    "review": {
+      "score": 9.4,
+      "verdict": "Sample · Essential",
+      "gameTitle": "Chrono Shift: Echoes of Eternity",
+      "developer": "Fictional studio",
+      "publisher": "Demonstration only",
+      "platform": [
+        "PC",
+        "PlayStation 5",
+        "Steam Deck"
+      ],
+      "releaseDate": "Not announced — fictional concept",
+      "pros": [
+        "Illustrative strength: a clear central design idea",
+        "Illustrative strength: atmosphere supports exploration"
+      ],
+      "cons": [
+        "Illustrative consideration: pacing needs careful balancing"
+      ],
+      "summary": "This sample verdict rewards the idea of spatial deduction while questioning how repeat journeys might affect the pace. It demonstrates a review layout; it does not describe a tested commercial game."
+    },
+    "content": {
+      "lead": "Imagine an observatory where the puzzle is not finding a key, but understanding what a machine once did. Chrono Shift is a fictional game concept built around that premise.",
+      "paragraphs": [
+        "This editorial sample explores a design idea. It is presented to demonstrate the reading experience and is not published reporting."
+      ],
+      "subsections": [
+        {
+          "heading": "An example critical lens",
+          "paragraphs": [
+            "This sample verdict rewards the idea of spatial deduction while questioning how repeat journeys might affect the pace. It demonstrates a review layout; it does not describe a tested commercial game."
+          ]
+        }
+      ]
+    },
+    "editorialStatus": "demonstration",
+    "artworkCredit": "Original prototype illustration · not game footage"
+  },
+  {
+    "id": "story-6",
+    "slug": "why-the-best-game-stories-leave-room-for-us",
+    "category": "FEATURES",
+    "title": "Valor Mortis: what the camera changes",
+    "subtitle": "A reading note from the published TheGameVoice archive.",
+    "excerpt": "A published opinion piece examines the design problems that emerge when Soulslike combat moves into first person.",
+    "coverImage": "/images/duel.svg",
+    "alt": "Editorial illustration for Valor Mortis: what the camera changes; not a screenshot",
+    "author": {
+      "name": "Vaibhav \"ChIcKnLiTL\" Poojary",
+      "role": "Original article author · TheGameVoice",
+      "avatar": "VA"
+    },
+    "publishedAt": "2026-10-25",
+    "readTime": "1 MIN READ",
+    "featured": false,
+    "trending": false,
+    "tags": [
+      "Narrative",
+      "Game Design",
+      "Essay"
+    ],
+    "content": {
+      "lead": "A published opinion piece examines the design problems that emerge when Soulslike combat moves into first person.",
+      "paragraphs": [
+        "Vaibhav Poojary focuses on enemy readability, limited peripheral vision and the relationship between encounter design and perspective. Read the original for the author’s complete first-hand assessment of Valor Mortis.",
+        "This page is a short, attributed reading note, not a reproduction of the original article. Follow the source link for the complete piece and its original context."
+      ]
+    },
+    "editorialStatus": "source-summary",
+    "artworkCredit": "Original prototype illustration · not game footage",
+    "source": {
+      "url": "https://www.thegamevoice.com/article/can-a-soulslike-survive-in-first-person-the-design-challenge-behind-valor-mortis",
+      "publication": "TheGameVoice",
+      "originalTitle": "Can a Soulslike Survive in First Person? - The Design Challenge Behind Valor Mortis"
+    }
+  },
+  {
+    "id": "story-7",
+    "slug": "indian-studios-finding-their-voice",
+    "category": "DEVELOPMENT",
+    "title": "Zatun: a studio with many worlds",
+    "subtitle": "A reading note from the published TheGameVoice archive.",
+    "excerpt": "TheGameVoice explores how Ahmedabad studio Zatun combines development services with games of its own.",
+    "coverImage": "/images/studio-dev.svg",
+    "alt": "Editorial illustration for Zatun: a studio with many worlds; not a screenshot",
+    "author": {
+      "name": "Vaibhav \"ChIcKnLiTL\" Poojary",
+      "role": "Original article author · TheGameVoice",
+      "avatar": "VA"
+    },
+    "publishedAt": "2026-10-16",
+    "readTime": "1 MIN READ",
+    "featured": true,
+    "trending": true,
+    "tags": [
+      "Indian Gaming",
+      "Indie Dev",
+      "Studio Spotlight",
+      "Culture"
+    ],
+    "content": {
+      "lead": "TheGameVoice explores how Ahmedabad studio Zatun combines development services with games of its own.",
+      "paragraphs": [
+        "Vaibhav Poojary’s studio profile traces a varied portfolio spanning art services, virtual reality and original projects. It offers a specific Indian studio perspective on the relationship between client work and creative ownership.",
+        "This page is a short, attributed reading note, not a reproduction of the original article. Follow the source link for the complete piece and its original context."
+      ]
+    },
+    "editorialStatus": "source-summary",
+    "artworkCredit": "Original prototype illustration · not game footage",
+    "source": {
+      "url": "https://www.thegamevoice.com/article/the-many-worlds-of-zatun-from-working-with-2k-and-disney-to-building-its-own-ip",
+      "publication": "TheGameVoice",
+      "originalTitle": "The Many Worlds of Zatun: From Working With 2K and Disney to Building Its Own IP"
+    }
+  },
+  {
+    "id": "story-8",
+    "slug": "the-people-behind-the-places-we-remember",
+    "category": "INTERVIEWS",
+    "title": "The people behind the places we remember",
+    "subtitle": "An interview concept about the everyday decisions behind environmental storytelling.",
+    "excerpt": "An interview concept about the everyday decisions behind environmental storytelling.",
+    "coverImage": "/images/observatory.svg",
+    "alt": "Editorial illustration for The people behind the places we remember; not a screenshot",
+    "author": {
+      "name": "Prototype desk",
+      "role": "Demonstration content",
+      "avatar": "PD"
+    },
+    "publishedAt": "2026-10-23",
+    "readTime": "1 MIN READ",
+    "featured": false,
+    "trending": true,
+    "tags": [
+      "Interview",
+      "Creative Direction",
+      "World Design"
+    ],
+    "interview": {
+      "interviewee": "Elena Rostova",
+      "role": "Creative Director",
+      "studio": "Ghostlight Works",
+      "location": "Stockholm, Sweden"
+    },
+    "content": {
+      "lead": "This is an interview brief, not a transcript. Elena Rostova is a fictional subject used to demonstrate how a creator profile could sit alongside a longer conversation.",
+      "paragraphs": [
+        "This editorial sample explores a design idea. It is presented to demonstrate the reading experience and is not published reporting."
+      ],
+      "subsections": [
+        {
+          "heading": "Questions worth asking",
+          "paragraphs": [
+            "How do you decide which parts of a location should remain unexplained? What can a room communicate before the player reads a line of dialogue? These are proposed questions, with no invented answers attributed to a real person."
+          ]
+        }
+      ]
+    },
+    "editorialStatus": "demonstration",
+    "artworkCredit": "Original prototype illustration · not game footage"
+  },
+  {
+    "id": "story-9",
+    "slug": "neon-foundry-tactical-noir-review",
+    "category": "REVIEWS",
+    "title": "Neon Foundry: the city as a puzzle",
+    "subtitle": "A sample verdict for a fictional tactical game, with illustrative scoring.",
+    "excerpt": "A sample verdict for a fictional tactical game, with illustrative scoring.",
+    "coverImage": "/images/cyberpunk-city.svg",
+    "alt": "Editorial illustration for Neon Foundry: the city as a puzzle; not a screenshot",
+    "author": {
+      "name": "Prototype desk",
+      "role": "Demonstration content",
+      "avatar": "PD"
+    },
+    "publishedAt": "2026-10-22",
+    "readTime": "1 MIN READ",
+    "featured": false,
+    "trending": false,
+    "tags": [
+      "Review",
+      "Cyberpunk",
+      "Strategy",
+      "Turn-Based"
+    ],
+    "review": {
+      "score": 8.8,
+      "verdict": "Sample · Great",
+      "gameTitle": "Neon Foundry",
+      "developer": "Fictional studio",
+      "publisher": "Demonstration only",
+      "platform": [
+        "PC",
+        "Xbox Series X",
+        "PlayStation 5"
+      ],
+      "releaseDate": "Not announced — fictional concept",
+      "pros": [
+        "Illustrative strength: a clear central design idea",
+        "Illustrative strength: atmosphere supports exploration"
+      ],
+      "cons": [
+        "Illustrative consideration: pacing needs careful balancing"
+      ],
+      "summary": "For this example, the verdict explores a tension between compact tactical spaces and repetition. The score and platform details exist solely to demonstrate the interface."
+    },
+    "content": {
+      "lead": "Neon Foundry imagines a city viewed as a network of opportunities: a service tunnel, a rooftop crossing, a light that can be switched off. Its fictional premise puts observation ahead of reflex.",
+      "paragraphs": [
+        "This editorial sample explores a design idea. It is presented to demonstrate the reading experience and is not published reporting."
+      ],
+      "subsections": [
+        {
+          "heading": "The trade-off",
+          "paragraphs": [
+            "For this example, the verdict explores a tension between compact tactical spaces and repetition. The score and platform details exist solely to demonstrate the interface."
+          ]
+        }
+      ]
+    },
+    "editorialStatus": "demonstration",
+    "artworkCredit": "Original prototype illustration · not game footage"
+  },
+  {
+    "id": "story-10",
+    "slug": "silent-canopy-review",
+    "category": "REVIEWS",
+    "title": "Silent Canopy: a slower way through",
+    "subtitle": "A sample review of an imagined woodland adventure. No commercial game was tested.",
+    "excerpt": "A sample review of an imagined woodland adventure. No commercial game was tested.",
+    "coverImage": "/images/indie-landscape.svg",
+    "alt": "Editorial illustration for Silent Canopy: a slower way through; not a screenshot",
+    "author": {
+      "name": "Prototype desk",
+      "role": "Demonstration content",
+      "avatar": "PD"
+    },
+    "publishedAt": "2026-10-21",
+    "readTime": "1 MIN READ",
+    "featured": false,
+    "trending": false,
+    "tags": [
+      "Review",
+      "Survival",
+      "Atmosphere",
+      "Indie"
+    ],
+    "review": {
+      "score": 9.1,
+      "verdict": "Sample · Exceptional",
+      "gameTitle": "Silent Canopy",
+      "developer": "Fictional studio",
+      "publisher": "Demonstration only",
+      "platform": [
+        "PC",
+        "Nintendo Switch",
+        "PlayStation 5"
+      ],
+      "releaseDate": "Not announced — fictional concept",
+      "pros": [
+        "Illustrative strength: a clear central design idea",
+        "Illustrative strength: atmosphere supports exploration"
+      ],
+      "cons": [
+        "Illustrative consideration: pacing needs careful balancing"
+      ],
+      "summary": "A slower pace works when there is something worth noticing. This demonstration verdict considers the balance between attentive exploration and the risk of leaving a player without direction."
+    },
+    "content": {
+      "lead": "Silent Canopy is a fictional concept in which following a stream or watching the movement of branches matters more than a quest marker. The example asks what a game might gain by lowering its voice.",
+      "paragraphs": [
+        "This editorial sample explores a design idea. It is presented to demonstrate the reading experience and is not published reporting."
+      ],
+      "subsections": [
+        {
+          "heading": "Making quiet meaningful",
+          "paragraphs": [
+            "A slower pace works when there is something worth noticing. This demonstration verdict considers the balance between attentive exploration and the risk of leaving a player without direction."
+          ]
+        }
+      ]
+    },
+    "editorialStatus": "demonstration",
+    "artworkCredit": "Original prototype illustration · not game footage"
+  },
+  {
+    "id": "story-11",
+    "slug": "the-archaeology-of-abandoned-servers",
+    "category": "DOCUMENTARIES",
+    "title": "The archaeology of abandoned servers",
+    "subtitle": "A documentary treatment about the social spaces games leave behind.",
+    "excerpt": "A documentary treatment about the social spaces games leave behind.",
+    "coverImage": "/images/server-vault.svg",
+    "alt": "Editorial illustration for The archaeology of abandoned servers; not a screenshot",
+    "author": {
+      "name": "Prototype desk",
+      "role": "Demonstration content",
+      "avatar": "PD"
+    },
+    "publishedAt": "2026-10-20",
+    "readTime": "1 MIN READ",
+    "featured": true,
+    "trending": true,
+    "tags": [
+      "Documentary",
+      "Video",
+      "Preservation",
+      "MMO",
+      "Internet History"
+    ],
+    "documentary": {
+      "duration": "42:18",
+      "productionYear": "2026",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Prologue: The Final Countdown"
         },
-      ],
+        {
+          "time": "08:14",
+          "title": "Chapter 1: The Ghosts of Star Wars Galaxies"
+        },
+        {
+          "time": "18:40",
+          "title": "Chapter 2: Packet Sniffing & Server Emulation"
+        },
+        {
+          "time": "29:10",
+          "title": "Chapter 3: The Ethics of Digital Memorials"
+        },
+        {
+          "time": "38:22",
+          "title": "Epilogue: When Code Becomes Heritage"
+        }
+      ]
     },
+    "content": {
+      "lead": "What remains of a multiplayer world after its last gathering? This proposed film would approach the question through places, player memories and the practical challenges of preservation.",
+      "paragraphs": [
+        "This editorial sample explores a design idea. It is presented to demonstrate the reading experience and is not published reporting."
+      ],
+      "subsections": [
+        {
+          "heading": "A film still on paper",
+          "paragraphs": [
+            "This is a written documentary concept. No film, interviews or archival permissions are attached, and no playback is available. The chapter outline suggests a possible structure rather than an existing production."
+          ]
+        }
+      ]
+    },
+    "editorialStatus": "demonstration",
+    "artworkCredit": "Original prototype illustration · not game footage"
   },
-
-  // 9. REVIEWS - SPOTLIGHT 2
   {
-    id: "story-9",
-    slug: "neon-foundry-tactical-noir-review",
-    category: "REVIEWS",
-    title: "Neon Foundry: A razor-sharp tactical noir thriller",
-    subtitle: "Style, substance, and unforgiving precision in a rain-slicked dystopia.",
-    excerpt: "Combining turn-based spatial puzzle mechanics with a brooding detective narrative, Neon Foundry delivers this year's smartest strategy surprise.",
-    coverImage: "/images/cyberpunk-city.svg",
-    alt: "Neon-drenched cyberpunk metropolis with towering corporate monoliths and rain reflections",
-    author: {
-      name: "Sarah Chen",
-      role: "Reviews Staff",
-      avatar: "SC",
+    "id": "story-12",
+    "slug": "making-space-for-new-perspectives",
+    "category": "DOCUMENTARIES",
+    "title": "Making space for new perspectives",
+    "subtitle": "A film concept about the craft of animation in games.",
+    "excerpt": "A film concept about the craft of animation in games.",
+    "coverImage": "/images/animation-desk.svg",
+    "alt": "Editorial illustration for Making space for new perspectives; not a screenshot",
+    "author": {
+      "name": "Prototype desk",
+      "role": "Demonstration content",
+      "avatar": "PD"
     },
-    publishedAt: "2026-10-22",
-    readTime: "6 MIN READ",
-    featured: false,
-    trending: false,
-    tags: ["Review", "Cyberpunk", "Strategy", "Turn-Based"],
-    review: {
-      score: 8.8,
-      verdict: "Great",
-      gameTitle: "Neon Foundry",
-      developer: "Cipher Zero Games",
-      publisher: "Raw Fury",
-      platform: ["PC", "Xbox Series X", "PlayStation 5"],
-      releaseDate: "October 2026",
-      playtime: "18 Hours",
-      pros: [
-        "Brilliant breach-and-clear room puzzles with rewound timeline replay",
-        "Striking visual design combining high-contrast pixel art with volumetric lighting",
-        "Sharp, cynical dialogue that avoids typical genre parody",
-      ],
-      cons: [
-        "Difficulty spikes in chapter 4 may frustrate less experienced tacticians",
-        "Controller inputs require manual remap for optimal comfort",
-      ],
-      summary: "Neon Foundry is a taut, electrifying strategy title that turns every two-story corporate warehouse into an intense battle of wits. A must-play for fans of Into the Breach and Gunpoint.",
+    "publishedAt": "2026-10-18",
+    "readTime": "1 MIN READ",
+    "featured": false,
+    "trending": false,
+    "tags": [
+      "Documentary",
+      "Animation",
+      "Art",
+      "Craft"
+    ],
+    "documentary": {
+      "duration": "28:45",
+      "productionYear": "2026",
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "The Return of the Pencil"
+        },
+        {
+          "time": "07:30",
+          "title": "Smear Frames in High Definition"
+        },
+        {
+          "time": "16:20",
+          "title": "Matching Input Latency to Frame Rates"
+        },
+        {
+          "time": "24:10",
+          "title": "The Hand-Crafted Future"
+        }
+      ]
     },
-    content: {
-      lead: "In the crowded genre of cyberpunk aesthetics, where purple neon and synthesized basslines are often used to mask shallow gameplay, Neon Foundry stands out through sheer mechanical discipline.",
-      paragraphs: [
-        "You play as Silas Vance, a disgraced private investigator in a city run by synthetic energy cartels. Every mission is staged across compact, multi-level tactical blueprints where a single miscalculated step means sudden death.",
-        "What elevates the game above its peers is the 'Retrospect' mechanic: after executing a grueling turn, you can watch the entire sequence played out in fluid real-time cinematic cameras, turning your painstaking planning into an effortless John Wick sequence.",
+    "content": {
+      "lead": "A character can reveal uncertainty through a pause before a step. Animation turns a collection of poses into a performance, often using small gestures that are easy to overlook.",
+      "paragraphs": [
+        "This editorial sample explores a design idea. It is presented to demonstrate the reading experience and is not published reporting."
       ],
+      "subsections": [
+        {
+          "heading": "Proposed approach",
+          "paragraphs": [
+            "The treatment would follow a single movement from sketch to playable scene. It is a concept preview, not a completed documentary or a claim of access to a studio."
+          ]
+        }
+      ]
     },
+    "editorialStatus": "demonstration",
+    "artworkCredit": "Original prototype illustration · not game footage"
   },
-
-  // 10. REVIEWS - SPOTLIGHT 3
   {
-    id: "story-10",
-    slug: "silent-canopy-review",
-    category: "REVIEWS",
-    title: "Silent Canopy: Finding peace in the ancient woods",
-    subtitle: "A gentle, breathtaking survival journey that chooses harmony over violence.",
-    excerpt: "By replacing guns and combat with ecological stewardship and acoustic cartography, Silent Canopy crafts a deeply moving testament to the natural world.",
-    coverImage: "/images/indie-landscape.svg",
-    alt: "Stylized low-poly alpine pine forest under an immense glowing full moon and aurora borealis",
-    author: {
-      name: "Marcus Thorne",
-      role: "Reviews Staff",
-      avatar: "MT",
+    "id": "story-13",
+    "slug": "independent-game-preservation-act-passed",
+    "category": "NEWS",
+    "title": "When a game goes offline, what should remain?",
+    "subtitle": "A sample news-analysis brief on access, preservation and the end of online services.",
+    "excerpt": "A sample news-analysis brief on access, preservation and the end of online services.",
+    "coverImage": "/images/archive.svg",
+    "alt": "Editorial illustration for When a game goes offline, what should remain?; not a screenshot",
+    "author": {
+      "name": "Prototype desk",
+      "role": "Demonstration content",
+      "avatar": "PD"
     },
-    publishedAt: "2026-10-21",
-    readTime: "7 MIN READ",
-    featured: false,
-    trending: false,
-    tags: ["Review", "Survival", "Atmosphere", "Indie"],
-    review: {
-      score: 9.1,
-      verdict: "Exceptional",
-      gameTitle: "Silent Canopy",
-      developer: "Moss & Timber Interactive",
-      publisher: "Finji",
-      platform: ["PC", "Nintendo Switch", "PlayStation 5"],
-      releaseDate: "September 2026",
-      playtime: "14 Hours",
-      pros: [
-        "Spellbinding audio soundscape that changes dynamically with wind and canopy density",
-        "Unique botanical crafting system that rewards real ecological observation",
-        "Zero combat mechanics, yet continuously tense and emotionally gripping",
+    "publishedAt": "2026-10-30",
+    "readTime": "1 MIN READ",
+    "featured": false,
+    "trending": true,
+    "tags": [
+      "Preservation",
+      "Legal",
+      "Industry",
+      "Copyright"
+    ],
+    "content": {
+      "lead": "A shutdown raises more than a technical question. Players may lose access to places where they spent time together, while preservation efforts face legal and practical limits.",
+      "paragraphs": [
+        "This editorial sample explores a design idea. It is presented to demonstrate the reading experience and is not published reporting."
       ],
-      cons: [
-        "Inventory management can feel slightly restrictive during long treks",
-      ],
-      summary: "Silent Canopy is a restorative, spiritually generous game that proves survival experiences don't need firearms or monsters to hold us spellbound.",
+      "subsections": [
+        {
+          "heading": "Questions before conclusions",
+          "paragraphs": [
+            "This sample proposes questions for future reporting: what depends on a server, what can be documented, and who can grant permission? It does not announce legislation or offer legal guidance."
+          ]
+        }
+      ]
     },
-    content: {
-      lead: "Most survival games begin by handing you an axe and asking you to deforest the wilderness. Silent Canopy asks you to sit still until the deer stop fearing your heartbeat.",
-      paragraphs: [
-        "Set across an expansive boreal reserve in subarctic North America, your task is not to conquer the wilderness, but to map its acoustic frequencies and help restore a fragmented seed bank.",
-        "The game's dynamic sound engine is easily its crowning achievement. Every tree species responds differently to precipitation; every bird call can be cataloged using a directional microphone to reveal migratory corridors.",
-      ],
-    },
+    "editorialStatus": "demonstration",
+    "artworkCredit": "Original prototype illustration · not game footage"
   },
-
-  // 11. DOCUMENTARIES - SPOTLIGHT 1
   {
-    id: "story-11",
-    slug: "the-archaeology-of-abandoned-servers",
-    category: "DOCUMENTARIES",
-    title: "The Archaeology of Abandoned Servers",
-    subtitle: "Inside the digital ruins of lost online worlds and the archivists preserving them.",
-    excerpt: "A 42-minute cinematic investigative documentary exploring what happens when the plug is pulled on virtual communities millions once called home.",
-    coverImage: "/images/documentary-cinema.svg",
-    alt: "Cinematic camera rig with anamorphic lens flare and film reel marks in dark studio",
-    author: {
-      name: "The Video Team",
-      role: "Documentary Unit",
-      avatar: "VT",
+    "id": "story-14",
+    "slug": "the-weight-of-the-sword",
+    "category": "IMPRESSIONS",
+    "title": "The weight of the sword",
+    "subtitle": "A fictional impressions notebook about momentum and commitment in melee combat.",
+    "excerpt": "A fictional impressions notebook about momentum and commitment in melee combat.",
+    "coverImage": "/images/mecha-forge.svg",
+    "alt": "Editorial illustration for The weight of the sword; not a screenshot",
+    "author": {
+      "name": "Prototype desk",
+      "role": "Demonstration content",
+      "avatar": "PD"
     },
-    publishedAt: "2026-10-20",
-    readTime: "42 MIN WATCH",
-    featured: true,
-    trending: true,
-    tags: ["Documentary", "Video", "Preservation", "MMO", "Internet History"],
-    documentary: {
-      duration: "42:18",
-      director: "Camille Laurent",
-      productionYear: "2026",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // demo placeholder with safe fallback
-      chapters: [
-        { time: "00:00", title: "Prologue: The Final Countdown" },
-        { time: "08:14", title: "Chapter 1: The Ghosts of Star Wars Galaxies" },
-        { time: "18:40", title: "Chapter 2: Packet Sniffing & Server Emulation" },
-        { time: "29:10", title: "Chapter 3: The Ethics of Digital Memorials" },
-        { time: "38:22", title: "Epilogue: When Code Becomes Heritage" },
+    "publishedAt": "2026-10-25",
+    "readTime": "1 MIN READ",
+    "featured": false,
+    "trending": false,
+    "tags": [
+      "Impressions",
+      "Action",
+      "Melee",
+      "Physics"
+    ],
+    "content": {
+      "lead": "Project Aegis is an imagined combat prototype. Its central design question is how a heavy weapon could feel convincing without making the controls feel reluctant.",
+      "paragraphs": [
+        "This editorial sample explores a design idea. It is presented to demonstrate the reading experience and is not published reporting."
       ],
+      "subsections": [
+        {
+          "heading": "A useful distinction",
+          "paragraphs": [
+            "Weight can come from anticipation, sound and recovery, rather than simply delaying an input. This is an illustrative design discussion, not a hands-on report or performance test."
+          ]
+        }
+      ]
     },
-    content: {
-      lead: "When an architectural monument crumbles, stone and mortar leave tangible traces in the dirt. But when a private server farm goes dark, hundreds of thousands of communal hours vanish into the void.",
-      paragraphs: [
-        "In our latest feature-length documentary, TheGameVoice follows a team of volunteer software preservationists and former MMO players as they reverse-engineer lost network packets to resurrect abandoned virtual spaces.",
-        "From early 2000s virtual social spaces to ambitious indie MMOs whose creators ran out of funding, this film asks fundamental questions about digital property, shared memory, and how human culture will be remembered three centuries from now.",
-      ],
-    },
+    "editorialStatus": "demonstration",
+    "artworkCredit": "Original prototype illustration · not game footage"
   },
-
-  // 12. DOCUMENTARIES - SPOTLIGHT 2
   {
-    id: "story-12",
-    slug: "making-space-for-new-perspectives",
-    category: "DOCUMENTARIES",
-    title: "Making Space: Independent Animation in Games",
-    subtitle: "How hand-drawn frame-by-frame animators are redefining virtual movement.",
-    excerpt: "A 28-minute look into three independent studios discarding standard 3D skeletal rigging in favor of bespoke traditional 2D animation.",
-    coverImage: "/images/sound-design.svg",
-    alt: "Sound design waveform visualizer with vibrant spectrum bars and microphone silhouette",
-    author: {
-      name: "The Video Team",
-      role: "Documentary Unit",
-      avatar: "VT",
+    "id": "story-15",
+    "slug": "composing-silence-interview-hildur-lind",
+    "category": "INTERVIEWS",
+    "title": "Composing silence",
+    "subtitle": "An interview concept about restraint, listening and interactive music.",
+    "excerpt": "An interview concept about restraint, listening and interactive music.",
+    "coverImage": "/images/score.svg",
+    "alt": "Editorial illustration for Composing silence; not a screenshot",
+    "author": {
+      "name": "Prototype desk",
+      "role": "Demonstration content",
+      "avatar": "PD"
     },
-    publishedAt: "2026-10-18",
-    readTime: "28 MIN WATCH",
-    featured: false,
-    trending: false,
-    tags: ["Documentary", "Animation", "Art", "Craft"],
-    documentary: {
-      duration: "28:45",
-      director: "Takeshi Morita",
-      productionYear: "2026",
-      chapters: [
-        { time: "00:00", title: "The Return of the Pencil" },
-        { time: "07:30", title: "Smear Frames in High Definition" },
-        { time: "16:20", title: "Matching Input Latency to Frame Rates" },
-        { time: "24:10", title: "The Hand-Crafted Future" },
+    "publishedAt": "2026-10-19",
+    "readTime": "1 MIN READ",
+    "featured": false,
+    "trending": false,
+    "tags": [
+      "Music",
+      "Soundtrack",
+      "Composer",
+      "Audio"
+    ],
+    "interview": {
+      "interviewee": "Hildur Lind",
+      "role": "Composer & Sound Designer",
+      "studio": "Independent",
+      "location": "Reykjavík, Iceland"
+    },
+    "content": {
+      "lead": "Hildur Lind is a fictional composer profile created for this demonstration. No interview took place, and no awards or professional credits are asserted here.",
+      "paragraphs": [
+        "This editorial sample explores a design idea. It is presented to demonstrate the reading experience and is not published reporting."
       ],
+      "subsections": [
+        {
+          "heading": "The conversation we would explore",
+          "paragraphs": [
+            "When should a soundtrack withdraw? How might a composer leave space for environmental sound? This outline offers questions rather than fabricated quotations."
+          ]
+        }
+      ]
     },
-    content: {
-      lead: "In a gaming landscape dominated by physics-driven ragdoll simulations and procedural motion matching, hand-drawn animation carries an immediate, human warmth.",
-      paragraphs: [
-        "We spend two weeks inside the workshops of three international teams creating games where every attack, jump, and stumble was drawn with ink and paper before ever touching a computer.",
-        "This documentary examines the technical friction between fixed 12-frame-per-second animation loops and contemporary 144Hz variable refresh rate gaming monitors.",
-      ],
-    },
+    "editorialStatus": "demonstration",
+    "artworkCredit": "Original prototype illustration · not game footage"
   },
-
-  // 13. NEWS - STORY 2
   {
-    id: "story-13",
-    slug: "independent-game-preservation-act-passed",
-    category: "NEWS",
-    title: "Historic Digital Preservation Framework Wins Cross-Industry Support",
-    subtitle: "New international pact grants certified archives legal immunity to preserve server-side game binaries.",
-    excerpt: "After five years of legal gridlock, major copyright bodies and cultural institutions agree on fair-use exemptions for dead online games.",
-    coverImage: "/images/stealth-shadows.svg",
-    alt: "Dramatic searchlight cutting across a dark rainy rooftop with water tower silhouette",
-    author: {
-      name: "Sarah Chen",
-      role: "Senior News Reporter",
-      avatar: "SC",
+    "id": "story-16",
+    "slug": "open-source-game-engines-momentum",
+    "category": "NEWS",
+    "title": "Choosing an engine beyond the feature list",
+    "subtitle": "A sample industry brief about tools, ownership and production needs.",
+    "excerpt": "A sample industry brief about tools, ownership and production needs.",
+    "coverImage": "/images/engine.svg",
+    "alt": "Editorial illustration for Choosing an engine beyond the feature list; not a screenshot",
+    "author": {
+      "name": "Prototype desk",
+      "role": "Demonstration content",
+      "avatar": "PD"
     },
-    publishedAt: "2026-10-30",
-    readTime: "5 MIN READ",
-    featured: false,
-    trending: true,
-    tags: ["Preservation", "Legal", "Industry", "Copyright"],
-    content: {
-      lead: "In what digital historians are hailing as the most significant cultural preservation milestone in twenty years, an international consortium has ratified the Digital Play Heritage Act.",
-      paragraphs: [
-        "Under the terms of the agreement, verified public libraries, academic institutions, and designated non-profits will be granted legal protections to circumvent DRM and reconstruct matchmaking servers once a commercial title has been officially decommissioned for more than 18 months.",
-        "The measure was backed by an unprecedented coalition of indie developers, consumer advocates, and three major platform holders.",
+    "publishedAt": "2026-10-28",
+    "readTime": "1 MIN READ",
+    "featured": false,
+    "trending": false,
+    "tags": [
+      "Open Source",
+      "Engine",
+      "Godot",
+      "Indie Dev"
+    ],
+    "content": {
+      "lead": "An engine decision involves the people who will use it every day. Documentation, export requirements, existing skills and the cost of switching can matter as much as a rendering feature.",
+      "paragraphs": [
+        "This editorial sample explores a design idea. It is presented to demonstrate the reading experience and is not published reporting."
       ],
+      "subsections": [
+        {
+          "heading": "Evidence before a trend",
+          "paragraphs": [
+            "This is a reporting outline, not a developer survey. It makes no adoption or market-share claims. A published version would need named sources and a clear account of how any figures were collected."
+          ]
+        }
+      ]
     },
+    "editorialStatus": "demonstration",
+    "artworkCredit": "Original prototype illustration · not game footage"
   },
-
-  // 14. IMPRESSIONS - STORY 2
   {
-    id: "story-14",
-    slug: "the-weight-of-the-sword",
-    category: "IMPRESSIONS",
-    title: "The weight of the sword: Hands-on with Project Aegis",
-    subtitle: "Why this brutal dark fantasy melee sim feels unlike anything before it.",
-    excerpt: "Physical parries, edge degradation, and posture mechanics that make every single duel feel like a life-or-death chess match.",
-    coverImage: "/images/mecha-forge.svg",
-    alt: "Colossal industrial mecha silhouette in a foundry with welding sparks flying",
-    author: {
-      name: "Marcus Thorne",
-      role: "Technical Editor",
-      avatar: "MT",
+    "id": "story-17",
+    "slug": "the-sonic-architecture-of-survival-horror",
+    "category": "FEATURES",
+    "title": "The sound of something out of sight",
+    "subtitle": "An essay on the uneasy relationship between listening and looking in horror.",
+    "excerpt": "An essay on the uneasy relationship between listening and looking in horror.",
+    "coverImage": "/images/stealth-shadows.svg",
+    "alt": "Editorial illustration for The sound of something out of sight; not a screenshot",
+    "author": {
+      "name": "Prototype desk",
+      "role": "Demonstration content",
+      "avatar": "PD"
     },
-    publishedAt: "2026-10-25",
-    readTime: "6 MIN READ",
-    featured: false,
-    trending: false,
-    tags: ["Impressions", "Action", "Melee", "Physics"],
-    content: {
-      lead: "There are no invincibility frames during dodge rolls in Project Aegis. If steel touches cloth or bone, the damage is calculated based on weapon momentum and blade velocity.",
-      paragraphs: [
-        "During our four-hour demo in London, every encounter felt genuinely terrifying. A peasant with a rusted scythe is just as lethal as an armored knight if you misjudge the trajectory of their swing.",
-        "By grounding its combat in physical mass rather than abstracted hitboxes, Project Aegis creates a level of visceral tension that makes most modern action titles feel paper-thin.",
+    "publishedAt": "2026-10-15",
+    "readTime": "1 MIN READ",
+    "featured": false,
+    "trending": false,
+    "tags": [
+      "Horror",
+      "Audio",
+      "Sound Design",
+      "Psychology"
+    ],
+    "content": {
+      "lead": "A sound from beyond the frame creates a question that an image can answer too quickly. A scrape in an adjacent room asks us to imagine a source before we can inspect it.",
+      "paragraphs": [
+        "This editorial sample explores a design idea. It is presented to demonstrate the reading experience and is not published reporting."
       ],
+      "subsections": [
+        {
+          "heading": "The value of restraint",
+          "paragraphs": [
+            "A quiet passage gives a sudden sound somewhere to land. Repeating the same cue can turn uncertainty into a routine, so timing matters as much as volume. This essay makes no physiological or medical claims."
+          ]
+        }
+      ]
     },
+    "editorialStatus": "demonstration",
+    "artworkCredit": "Original prototype illustration · not game footage"
   },
-
-  // 15. INTERVIEWS - STORY 2
   {
-    id: "story-15",
-    slug: "composing-silence-interview-hildur-lind",
-    category: "INTERVIEWS",
-    title: "Composing Silence: A Conversation with Hildur Lind",
-    subtitle: "The acclaimed composer on why the best gaming soundtracks know when to stop playing.",
-    excerpt: "From cello feedback to contact microphones on glacier ice, Lind reveals the unusual sonic palette powering this generation's most haunting scores.",
-    coverImage: "/images/sound-design.svg",
-    alt: "Sound waveform studio frequencies and vocal microphone silhouette in moody purple lighting",
-    author: {
-      name: "Devin Mercer",
-      role: "Contributing Editor",
-      avatar: "DM",
+    "id": "story-18",
+    "slug": "velocity-zero-anti-grav-racer",
+    "category": "IMPRESSIONS",
+    "title": "Velocity Zero: finding the racing line",
+    "subtitle": "A fictional impressions concept about speed, readability and rhythm.",
+    "excerpt": "A fictional impressions concept about speed, readability and rhythm.",
+    "coverImage": "/images/speed-racing.svg",
+    "alt": "Editorial illustration for Velocity Zero: finding the racing line; not a screenshot",
+    "author": {
+      "name": "Prototype desk",
+      "role": "Demonstration content",
+      "avatar": "PD"
     },
-    publishedAt: "2026-10-19",
-    readTime: "9 MIN READ",
-    featured: false,
-    trending: false,
-    tags: ["Music", "Soundtrack", "Composer", "Audio"],
-    interview: {
-      interviewee: "Hildur Lind",
-      role: "Composer & Sound Designer",
-      studio: "Independent",
-      location: "Reykjavík, Iceland",
-      pullQuote: "Music in a game should not be wallpaper. If it doesn't have something critical to say about the character's internal reality, it shouldn't exist.",
-    },
-    content: {
-      lead: "When Hildur Lind won the BAFTA for Original Score in 2024, she didn't thank an orchestra. She thanked an old broken upright piano she found in an abandoned fishing cannery.",
-      paragraphs: [
-        "In this wide-ranging discussion, Lind talks about microtonal tunings, the emotional geometry of interactive audio, and why dynamic music systems must learn to respect quiet moments.",
+    "publishedAt": "2026-10-21",
+    "readTime": "1 MIN READ",
+    "featured": false,
+    "trending": false,
+    "tags": [
+      "Racing",
+      "Sci-Fi",
+      "Arcade",
+      "Impressions"
+    ],
+    "content": {
+      "lead": "Velocity Zero is an imagined anti-gravity racer. Its design premise is simple: a fast game should communicate its next turn before the player runs out of time to react.",
+      "paragraphs": [
+        "This editorial sample explores a design idea. It is presented to demonstrate the reading experience and is not published reporting."
       ],
+      "subsections": [
+        {
+          "heading": "Speed needs structure",
+          "paragraphs": [
+            "Track silhouettes, repeated landmarks and a consistent visual language could make a difficult circuit learnable. This is a concept discussion with no frame-rate, latency or hands-on testing claims."
+          ]
+        }
+      ]
     },
+    "editorialStatus": "demonstration",
+    "artworkCredit": "Original prototype illustration · not game footage"
   },
-
-  // 16. NEWS - STORY 3
   {
-    id: "story-16",
-    slug: "open-source-game-engines-momentum",
-    category: "NEWS",
-    title: "Open-Source Game Engines Surge Past 40% Adoption Among Indie Creators",
-    subtitle: "Community-driven tools are no longer alternative curiosities—they are powering major commercial hits.",
-    excerpt: "Annual developer survey reveals Godot and Rust-based engines gaining significant market share following commercial license restructuring.",
-    coverImage: "/images/studio-dev.svg",
-    alt: "Developer workspace showing code editor and 3D wireframe mesh on dual displays",
-    author: {
-      name: "Sarah Chen",
-      role: "Senior News Reporter",
-      avatar: "SC",
+    "id": "story-19",
+    "slug": "behind-the-pixels-indie-survival",
+    "category": "DOCUMENTARIES",
+    "title": "Behind the pixels: the work between milestones",
+    "subtitle": "A documentary concept about the less visible rhythms of making a game.",
+    "excerpt": "A documentary concept about the less visible rhythms of making a game.",
+    "coverImage": "/images/production.svg",
+    "alt": "Editorial illustration for Behind the pixels: the work between milestones; not a screenshot",
+    "author": {
+      "name": "Prototype desk",
+      "role": "Demonstration content",
+      "avatar": "PD"
     },
-    publishedAt: "2026-10-28",
-    readTime: "4 MIN READ",
-    featured: false,
-    trending: false,
-    tags: ["Open Source", "Engine", "Godot", "Indie Dev"],
-    content: {
-      lead: "The annual Global Game Creator Index was published this morning, and the numbers reveal a dramatic structural shift across independent game production.",
-      paragraphs: [
-        "Over 42% of studios with fewer than thirty employees now maintain their primary production pipelines on open-source game engines, compared to just 14% three years ago.",
-        "The shift is fueled by concerns over proprietary licensing unpredictability and the rapid maturation of community-maintained Vulkan rendering backends.",
+    "publishedAt": "2026-10-12",
+    "readTime": "1 MIN READ",
+    "featured": false,
+    "trending": false,
+    "tags": [
+      "Documentary",
+      "Indie Dev",
+      "Behind The Scenes",
+      "Personal Story"
+    ],
+    "documentary": {
+      "duration": "35:12",
+      "productionYear": "2026",
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "The Prototype Dream"
+        },
+        {
+          "time": "11:20",
+          "title": "When the Savings Ran Out"
+        },
+        {
+          "time": "21:05",
+          "title": "The Midnight Demo Viral Spike"
+        },
+        {
+          "time": "30:40",
+          "title": "Launch Day Tears"
+        }
+      ]
+    },
+    "content": {
+      "lead": "A prototype is a beginning, not a promise. This proposed documentary would focus on iteration: ideas that change, features that disappear and the everyday work between public milestones.",
+      "paragraphs": [
+        "This editorial sample explores a design idea. It is presented to demonstrate the reading experience and is not published reporting."
       ],
+      "subsections": [
+        {
+          "heading": "An honest treatment",
+          "paragraphs": [
+            "No filmmakers or developers have been interviewed for this sample. The outline is an invitation to consider the production process, not a record of financial hardship or a claim about a real team."
+          ]
+        }
+      ]
     },
+    "editorialStatus": "demonstration",
+    "artworkCredit": "Original prototype illustration · not game footage"
   },
-
-  // 17. FEATURES - STORY 3
   {
-    id: "story-17",
-    slug: "the-sonic-architecture-of-survival-horror",
-    category: "FEATURES",
-    title: "The Sonic Architecture of Survival Horror",
-    subtitle: "How sound designers use infrasound, spatial acoustics, and dissonance to terrify us.",
-    excerpt: "A deep acoustic examination of why the scariest thing in interactive media is never what you see, but what you hear around the corner.",
-    coverImage: "/images/stealth-shadows.svg",
-    alt: "Dark noir alleyway with high-contrast searchlight and volumetric haze",
-    author: {
-      name: "The Editorial Team",
-      role: "Features Desk",
-      avatar: "ET",
+    "id": "story-20",
+    "slug": "the-death-and-rebirth-of-immersive-sims",
+    "category": "DEVELOPMENT",
+    "title": "A door with more than one answer",
+    "subtitle": "A design notebook on the appeal of systems that meet in unexpected ways.",
+    "excerpt": "A design notebook on the appeal of systems that meet in unexpected ways.",
+    "coverImage": "/images/doorway.svg",
+    "alt": "Editorial illustration for A door with more than one answer; not a screenshot",
+    "author": {
+      "name": "Prototype desk",
+      "role": "Demonstration content",
+      "avatar": "PD"
     },
-    publishedAt: "2026-10-15",
-    readTime: "11 MIN READ",
-    featured: false,
-    trending: false,
-    tags: ["Horror", "Audio", "Sound Design", "Psychology"],
-    content: {
-      lead: "Close your eyes in a horror film, and you are shielded from the terror. Close your eyes in a survival horror game, and the horror intensifies tenfold.",
-      paragraphs: [
-        "Sound in gaming is directional, immediate, and omnipresent. When an audio cue pans behind your left shoulder, your autonomic nervous system reacts before your rational brain can intervene.",
-        "We dissect the acoustic tricks—from Shepard tones that create the illusion of endlessly rising pitch, to sub-20Hz infrasound frequencies known to induce nausea and dread.",
+    "publishedAt": "2026-10-14",
+    "readTime": "1 MIN READ",
+    "featured": false,
+    "trending": false,
+    "tags": [
+      "Immersive Sim",
+      "History",
+      "Game Design",
+      "Emergence"
+    ],
+    "content": {
+      "lead": "A locked door can be an instruction to find a key, or it can be a question. Could another route, a movable object or a different tool change the problem?",
+      "paragraphs": [
+        "This editorial sample explores a design idea. It is presented to demonstrate the reading experience and is not published reporting."
       ],
+      "subsections": [
+        {
+          "heading": "Designing for possibility",
+          "paragraphs": [
+            "When systems share clear rules, players can make plans that were not explicitly scripted. The challenge is making those rules legible enough that experimentation feels purposeful rather than arbitrary."
+          ]
+        }
+      ]
     },
+    "editorialStatus": "demonstration",
+    "artworkCredit": "Original prototype illustration · not game footage"
   },
-
-  // 18. IMPRESSIONS - STORY 3
   {
-    id: "story-18",
-    slug: "velocity-zero-anti-grav-racer",
-    category: "IMPRESSIONS",
-    title: "Velocity Zero: Pure speed without compromise",
-    subtitle: "Taking the wheel of the fastest, most uncompromising anti-gravity racer in a decade.",
-    excerpt: "At 1,200 km/h, track recognition becomes pure instinct. Hands-on with the spiritual successor to WipEout and F-Zero.",
-    coverImage: "/images/speed-racing.svg",
-    alt: "High-speed anti-gravity hovercraft drifting along neon-lit mountain curves at night",
-    author: {
-      name: "Devin Mercer",
-      role: "Contributing Editor",
-      avatar: "DM",
+    "id": "story-21",
+    "slug": "from-bengaluru-to-neo-tokyo-vikram-sethi",
+    "category": "INTERVIEWS",
+    "title": "Imagining a different future city",
+    "subtitle": "An interview concept about place, architecture and speculative worlds.",
+    "excerpt": "An interview concept about place, architecture and speculative worlds.",
+    "coverImage": "/images/cyberpunk-city.svg",
+    "alt": "Editorial illustration for Imagining a different future city; not a screenshot",
+    "author": {
+      "name": "Prototype desk",
+      "role": "Demonstration content",
+      "avatar": "PD"
     },
-    publishedAt: "2026-10-21",
-    readTime: "5 MIN READ",
-    featured: false,
-    trending: false,
-    tags: ["Racing", "Sci-Fi", "Arcade", "Impressions"],
-    content: {
-      lead: "At 1,200 kilometers per hour, you don't have time to look at the scenery. You don't have time to glance at your shield gauge. You are reacting to color and vibration.",
-      paragraphs: [
-        "Velocity Zero delivers an exhilarating adrenaline rush. Built by veteran arcade engineers, the title runs at a locked 120 frames per second with razor-sharp zero-latency handling.",
+    "publishedAt": "2026-10-10",
+    "readTime": "1 MIN READ",
+    "featured": false,
+    "trending": false,
+    "tags": [
+      "Interview",
+      "Cyberpunk",
+      "India",
+      "Art Direction"
+    ],
+    "interview": {
+      "interviewee": "Vikram Sethi",
+      "role": "Founder & Studio Head",
+      "studio": "Mandala Interactive",
+      "location": "Bengaluru, India"
+    },
+    "content": {
+      "lead": "Vikram Sethi and Mandala Interactive are fictional profiles in this prototype. No studio announcement, interview or commercial project is represented by this article.",
+      "paragraphs": [
+        "This editorial sample explores a design idea. It is presented to demonstrate the reading experience and is not published reporting."
       ],
+      "subsections": [
+        {
+          "heading": "Starting with a place",
+          "paragraphs": [
+            "The proposed conversation would ask how everyday infrastructure might shape a speculative city. Transit, shade, markets and public gathering places could offer richer starting points than a familiar skyline."
+          ]
+        }
+      ]
     },
-  },
-
-  // 19. DOCUMENTARIES - STORY 3
-  {
-    id: "story-19",
-    slug: "behind-the-pixels-indie-survival",
-    category: "DOCUMENTARIES",
-    title: "Behind the Pixels: Five Years in the Dark",
-    subtitle: "The harrowing personal journey behind the making of an indie masterpiece.",
-    excerpt: "A raw, intimate 35-minute chronicle following two brothers through burnout, bankruptcies, and triumphant critical acclaim.",
-    coverImage: "/images/documentary-cinema.svg",
-    alt: "Cinema camera clapperboard and studio lighting setup for documentary production",
-    author: {
-      name: "The Video Team",
-      role: "Documentary Unit",
-      avatar: "VT",
-    },
-    publishedAt: "2026-10-12",
-    readTime: "35 MIN WATCH",
-    featured: false,
-    trending: false,
-    tags: ["Documentary", "Indie Dev", "Behind The Scenes", "Personal Story"],
-    documentary: {
-      duration: "35:12",
-      director: "Elena Rostova",
-      productionYear: "2026",
-      chapters: [
-        { time: "00:00", title: "The Prototype Dream" },
-        { time: "11:20", title: "When the Savings Ran Out" },
-        { time: "21:05", title: "The Midnight Demo Viral Spike" },
-        { time: "30:40", title: "Launch Day Tears" },
-      ],
-    },
-    content: {
-      lead: "Making an independent video game is widely recognized as one of the most punishing creative endeavors in modern media.",
-      paragraphs: [
-        "Filmed over five uninterrupted years, Behind the Pixels captures the unvarnished reality of two brothers building a game in a drafty garage, facing financial ruin, and ultimately creating one of the generation's most beloved puzzle platforms.",
-      ],
-    },
-  },
-
-  // 20. DEVELOPMENT - STORY 3
-  {
-    id: "story-20",
-    slug: "the-death-and-rebirth-of-immersive-sims",
-    category: "DEVELOPMENT",
-    title: "The Death and Rebirth of Immersive Sims",
-    subtitle: "How systemic emergent design survived commercial apathy to become the backbone of modern RPGs.",
-    excerpt: "From Looking Glass Studios to contemporary indie architects, tracing the lineage of games that refuse to tell you how to solve a problem.",
-    coverImage: "/images/retro-console.svg",
-    alt: "CRT screen with green phosphor wireframe graphic simulation and vintage hardware casing",
-    author: {
-      name: "Marcus Thorne",
-      role: "Technical Editor",
-      avatar: "MT",
-    },
-    publishedAt: "2026-10-14",
-    readTime: "8 MIN READ",
-    featured: false,
-    trending: false,
-    tags: ["Immersive Sim", "History", "Game Design", "Emergence"],
-    content: {
-      lead: "In an immersive sim, there is never a single correct solution to a locked door. You can pick the lock, hack the keypad, stack wooden crates to reach an overhead air vent, or light a fire to trigger the emergency sprinkler system.",
-      paragraphs: [
-        "While big-budget publishers frequently deemed this genre too difficult to market, indie developers have embraced its emergent principles with astonishing vigor.",
-      ],
-    },
-  },
-
-  // 21. INTERVIEWS - STORY 3
-  {
-    id: "story-21",
-    slug: "from-bengaluru-to-neo-tokyo-vikram-sethi",
-    category: "INTERVIEWS",
-    title: "From Bengaluru to Neo-Tokyo: Vikram Sethi",
-    subtitle: "The Mandala Interactive founder on architectural futurism and South Asian cyberpunk.",
-    excerpt: "A conversation on subverting Western cyberpunk tropes, designing vertical urban sprawl, and the future of Indian indie development.",
-    coverImage: "/images/cyberpunk-city.svg",
-    alt: "Cyberpunk neon city skyline with flying transports and reflective wet asphalt",
-    author: {
-      name: "Arjun Nambiar",
-      role: "Contributing Editor, South India",
-      avatar: "AN",
-    },
-    publishedAt: "2026-10-10",
-    readTime: "7 MIN READ",
-    featured: false,
-    trending: false,
-    tags: ["Interview", "Cyberpunk", "India", "Art Direction"],
-    interview: {
-      interviewee: "Vikram Sethi",
-      role: "Founder & Studio Head",
-      studio: "Mandala Interactive",
-      location: "Bengaluru, India",
-      pullQuote: "Western cyberpunk is always rain and neon kanji. We wanted heat, monsoon humidity, autorickshaws retrofitted with ion thrusters, and tea stalls under solar pylons.",
-    },
-    content: {
-      lead: "When Mandala Interactive unveiled their debut title at the Tokyo Game Show, the trailer went viral within hours.",
-      paragraphs: [
-        "In this interview, founder Vikram Sethi talks about reclaiming futurism from Western sci-fi cliches and how his background in civil engineering influences their virtual cityscapes.",
-      ],
-    },
-  },
+    "editorialStatus": "demonstration",
+    "artworkCredit": "Original prototype illustration · not game footage"
+  }
 ];
 
 // Helper Query Functions

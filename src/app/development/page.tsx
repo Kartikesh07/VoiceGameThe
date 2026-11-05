@@ -1,10 +1,8 @@
-"use client";
 
-import React from "react";
-import Link from "next/link";
-import { Cpu, Code, ArrowUpRight, Wrench } from "lucide-react";
+import { Artwork, BookmarkButton, Label } from "@/components/ui/editorial";
 import { getStoriesByCategory } from "@/data/stories";
-import { Artwork, Label, BookmarkButton } from "@/components/ui/editorial";
+import { ArrowUpRight, Cpu } from "lucide-react";
+import Link from "next/link";
 
 export default function DevelopmentPage() {
   const devStories = getStoriesByCategory("DEVELOPMENT");
@@ -12,7 +10,7 @@ export default function DevelopmentPage() {
   const otherDev = devStories.filter((s) => s.id !== heroDev.id);
 
   return (
-    <div className="editorial-wrap py-10 lg:py-16 space-y-12">
+    <div className="category-page category-development editorial-wrap py-10 lg:py-16 space-y-12">
       {/* Header */}
       <div>
         <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#BEF264] flex items-center gap-2 mb-2">

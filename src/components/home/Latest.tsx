@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { ArrowRight, Filter, SlidersHorizontal } from "lucide-react";
-import { stories, getStoriesByCategory } from "@/data/stories";
-import type { Category } from "@/types";
-import { SectionTitle } from "@/components/ui/editorial";
 import { ArticleCard } from "@/components/articles/ArticleCard";
+import { SectionTitle } from "@/components/ui/editorial";
+import { getStoriesByCategory, stories } from "@/data/stories";
+import type { Category } from "@/types";
+import { ArrowRight, SlidersHorizontal } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 const filterCategories: { label: string; value: Category | "ALL" }[] = [
   { label: "All Coverage", value: "ALL" },
@@ -48,7 +48,7 @@ export default function Latest() {
       <SectionTitle
         eyebrow="CONTINUOUS COVERAGE"
         title="The Latest Stream"
-        description="Every critical shift, thoughtful critique, and deep dive published by our desks."
+        description="Browse published reading notes and sample editorial concepts across every desk."
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
@@ -59,7 +59,7 @@ export default function Latest() {
             {/* Filter Pills */}
             <div
               className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none"
-              role="tablist"
+              role="group"
               aria-label="Filter stories by editorial desk"
             >
               {filterCategories.map((cat) => {
@@ -67,8 +67,7 @@ export default function Latest() {
                 return (
                   <button
                     key={cat.value}
-                    role="tab"
-                    aria-selected={isSelected}
+                    aria-pressed={isSelected}
                     onClick={() => handleFilterChange(cat.value)}
                     className={`px-3 py-1.5 text-xs font-semibold rounded-full whitespace-nowrap transition-colors cursor-pointer ${
                       isSelected
@@ -89,6 +88,7 @@ export default function Latest() {
                 Sort stories
               </label>
               <select
+                aria-label="Sort latest stories"
                 id="stream-sort"
                 value={sortOrder}
                 onChange={(e) => setSortOrder(e.target.value as "newest" | "oldest")}
@@ -144,7 +144,7 @@ export default function Latest() {
             <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#2B3038]">
               <h3 className="text-lg font-bold text-[#F5F5F4] flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#BEF264]" />
-                Editor's Picks
+                Start here
               </h3>
               <span className="text-[10px] font-mono tracking-wider uppercase text-[#A1A1AA]">
                 CURATED

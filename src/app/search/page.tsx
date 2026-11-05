@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
-import { Search, X, SlidersHorizontal, ArrowRight } from "lucide-react";
+import { ArticleCard } from "@/components/articles/ArticleCard";
 import { searchStories } from "@/data/stories";
 import type { Category } from "@/types";
-import { ArticleCard } from "@/components/articles/ArticleCard";
+import { Search, X } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
 
 const categoryFilters: { label: string; value: Category | "ALL" }[] = [
   { label: "All Stories", value: "ALL" },
@@ -23,15 +23,19 @@ function SearchContent() {
   const router = useRouter();
 
   const initialQuery = searchParams.get("q") || "";
-  const initialCategory = (searchParams.get("category") as Category | "ALL") || "ALL";
+  const initialCategory = categoryFilters.find((c) => c.value === searchParams.get("category"))?.value || "ALL";
 
   const [query, setQuery] = useState(initialQuery);
   const [category, setCategory] = useState<Category | "ALL">(initialCategory);
 
-  // Sync state if URL changes externally
-  useEffect(() => {
+  // Synchronize browser back/forward navigation before rendering stale filters.
+  const [previousParams, setPreviousParams] = useState(searchParams.toString());
+  if (previousParams !== searchParams.toString()) {
+    setPreviousParams(searchParams.toString());
     setQuery(searchParams.get("q") || "");
-  }, [searchParams]);
+    const nextCategory = searchParams.get("category");
+    setCategory(categoryFilters.find((c) => c.value === nextCategory)?.value || "ALL");
+  }
 
   // Debounced URL update
   useEffect(() => {
@@ -60,7 +64,7 @@ function SearchContent() {
   ];
 
   return (
-    <div className="editorial-wrap py-10 lg:py-16 space-y-10">
+    <div className="category-page category-search editorial-wrap py-10 lg:py-16 space-y-10">
       {/* Search Header */}
       <div className="max-w-3xl space-y-4">
         <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#BEF264] block">
@@ -70,7 +74,7 @@ function SearchContent() {
           Search TheGameVoice<span className="text-[#BEF264]">.</span>
         </h1>
         <p className="text-sm text-[#A1A1AA] leading-relaxed">
-          Search across full editorial transcripts, reviews, developer interviews, and investigative video documentaries.
+          Search article titles, subtitles, summaries, authors and tags, plus review game titles, developers and interview subjects. Full article text is not indexed.
         </p>
 
         {/* Search Input Box */}
@@ -79,6 +83,7 @@ function SearchContent() {
             <Search size={20} className="text-[#A1A1AA] shrink-0" />
             <input
               type="search"
+              aria-label="Search the article archive"
               placeholder="Search by game title, topic, author, studio, or concept…"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -121,6 +126,7 @@ function SearchContent() {
         {categoryFilters.map((cat) => (
           <button
             key={cat.value}
+                  aria-pressed={category === cat.value}
             type="button"
             onClick={() => setCategory(cat.value)}
             className={`px-3 py-1.5 text-xs font-semibold rounded-full whitespace-nowrap transition-colors cursor-pointer ${
@@ -138,7 +144,7 @@ function SearchContent() {
       <div className="flex items-center justify-between text-xs text-[#A1A1AA]" aria-live="polite">
         <span>
           Showing <b>{results.length}</b> {results.length === 1 ? "article" : "articles"}
-          {query.trim() && <> for "{query}"</>}
+          {query.trim() && <> for &quot;{query}&quot;</>}
           {category !== "ALL" && <> in {category}</>}
         </span>
         {query && (
@@ -169,7 +175,7 @@ function SearchContent() {
           </div>
           <h3 className="text-xl font-bold text-[#F5F5F4]">No matching articles found</h3>
           <p className="text-sm text-[#A1A1AA] leading-relaxed">
-            We couldn't find any stories matching your query. Check your spelling or try broader terms like "worldbuilding", "review", or "engine".
+            We couldn&apos;t find any stories matching your query. Check your spelling or try broader terms like &quot;worldbuilding&quot;, &quot;review&quot;, or &quot;engine&quot;.
           </p>
           <div className="pt-2">
             <button

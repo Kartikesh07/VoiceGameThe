@@ -1,27 +1,23 @@
-import React from "react";
+import { ArticleCard } from "@/components/articles/ArticleCard";
+import {
+Artwork,
+BookmarkButton,
+Label,
+ReadingProgressBar,
+ShareButton,
+VerdictCard,
+} from "@/components/ui/editorial";
+import { getRelatedStories, getStoryBySlug, stories } from "@/data/stories";
+import {
+ArrowLeft,
+ArrowRight,
+ChevronRight,
+Clock
+} from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import type { Metadata } from "next";
-import {
-  Clock,
-  Calendar,
-  ChevronRight,
-  ArrowLeft,
-  ArrowRight,
-  Play,
-  Film,
-  Sparkles,
-} from "lucide-react";
-import { stories, getStoryBySlug, getRelatedStories } from "@/data/stories";
-import {
-  Artwork,
-  Label,
-  BookmarkButton,
-  ShareButton,
-  ReadingProgressBar,
-  VerdictCard,
-} from "@/components/ui/editorial";
-import { ArticleCard } from "@/components/articles/ArticleCard";
 
 interface ArticlePageProps {
   params: Promise<{ slug: string }>;
@@ -78,7 +74,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     <>
       <ReadingProgressBar />
 
-      <article className="min-h-screen pb-24">
+      <article className="article-detail min-h-screen pb-24">
         {/* Breadcrumbs Navigation */}
         <div className="border-b border-[#2B3038] bg-[#0E1116]">
           <div className="editorial-wrap py-3.5 flex items-center gap-2 text-xs text-[#A1A1AA] overflow-x-auto scrollbar-none">
@@ -138,12 +134,19 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             </div>
 
             <div className="text-right">
-              <span className="block font-medium text-[#F5F5F4]">Published</span>
+              <span className="block font-medium text-[#F5F5F4]">{story.source ? "Original publication" : "Sample date"}</span>
               <span className="text-[11px] text-[#A1A1AA]">{story.publishedAt}</span>
             </div>
           </div>
         </header>
 
+        <div className="editorial-wrap max-w-4xl mb-8">
+          <div className="provenance-note">
+            <strong>{story.source ? "Published reading note" : "Editorial demonstration"}</strong>
+            <p>{story.source ? "A short summary of a published piece, credited to its original author. Illustration is not game footage." : "Fictional editorial sample. Games, people, scores and production details are illustrative; no testing, interviews or reporting took place."}</p>
+            {story.source && <a href={story.source.url} target="_blank" rel="noreferrer" className="inline-flex items-center min-h-11 text-[#BEF264] underline underline-offset-4">Read the original on {story.source.publication} ↗</a>}
+          </div>
+        </div>
         {/* Large Cover Hero Image */}
         <div className="editorial-wrap max-w-5xl mb-12">
           <div className="relative rounded-2xl overflow-hidden border border-[#2B3038] shadow-2xl">
@@ -159,13 +162,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           </div>
           {story.alt && (
             <p className="text-xs text-[#A1A1AA] italic mt-2.5 px-2">
-              Caption: {story.alt}
+              Caption: {story.alt} · {story.artworkCredit}
             </p>
           )}
         </div>
 
         {/* Main Article Body */}
-        <div className="editorial-wrap max-w-3xl">
+        <div id="article-body" className="article-copy editorial-wrap max-w-3xl">
           {/* Lead Paragraph */}
           {story.content.lead && (
             <p className="text-lg sm:text-xl font-medium text-[#F5F5F4] leading-relaxed mb-8 first-letter:text-5xl first-letter:font-black first-letter:float-left first-letter:mr-3 first-letter:text-[#BEF264] first-letter:leading-none">
@@ -184,7 +187,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           {story.content.pullQuote && (
             <figure className="my-12 p-8 bg-[#15191F] border-l-4 border-[#BEF264] rounded-r-xl">
               <blockquote className="text-xl sm:text-2xl font-bold text-[#F5F5F4] leading-snug tracking-tight">
-                "{story.content.pullQuote.quote}"
+                &quot;{story.content.pullQuote.quote}&quot;
               </blockquote>
               {story.content.pullQuote.attribution && (
                 <figcaption className="text-xs text-[#BEF264] font-bold uppercase tracking-wider mt-3">
@@ -211,10 +214,12 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                   {section.image && (
                     <div className="my-6 rounded-xl overflow-hidden border border-[#2B3038]">
                       <div className="relative aspect-[16/9] bg-[#15191F]">
-                        <img
+                        <Image
                           src={section.image}
                           alt={section.imageCaption || section.heading}
-                          className="w-full h-full object-cover"
+                          fill
+                          sizes="(max-width: 767px) 100vw, 768px"
+                          className="object-cover"
                         />
                       </div>
                       {section.imageCaption && (
@@ -232,47 +237,12 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           {/* Special Reviews Section: Verdict & Score */}
           {story.review && <VerdictCard review={story.review} />}
 
-          {/* Special Documentaries Section: Video Player Preview & Chapters */}
           {story.documentary && (
-            <section
-              aria-labelledby="documentary-player-heading"
-              className="my-10 p-6 md:p-8 bg-[#15191F] border border-[#2B3038] rounded-xl"
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <Film size={18} className="text-[#BEF264]" />
-                <h3 id="documentary-player-heading" className="text-lg font-bold text-[#F5F5F4]">
-                  Documentary Screening ({story.documentary.duration})
-                </h3>
-              </div>
-
-              <div className="relative aspect-video bg-black rounded-lg overflow-hidden flex flex-col items-center justify-center p-6 text-center border border-[#2B3038]">
-                <div className="w-14 h-14 rounded-full bg-[#BEF264] text-[#0B0D10] flex items-center justify-center mb-3 pl-1 shadow-lg">
-                  <Play size={24} fill="currentColor" />
-                </div>
-                <h4 className="text-base font-bold text-[#F5F5F4] mb-1">{story.title}</h4>
-                <p className="text-xs text-[#A1A1AA]">
-                  Director: {story.documentary.director} · Production Year: {story.documentary.productionYear}
-                </p>
-              </div>
-
-              {story.documentary.chapters && (
-                <div className="mt-6 pt-6 border-t border-[#2B3038]">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#A1A1AA] mb-3">
-                    Documentary Chapters & Timestamps
-                  </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                    {story.documentary.chapters.map((ch, i) => (
-                      <div
-                        key={i}
-                        className="flex items-center gap-2 p-2 rounded bg-[#1C2229] border border-[#2B3038]"
-                      >
-                        <span className="font-mono text-[#BEF264] font-bold">{ch.time}</span>
-                        <span className="text-[#F5F5F4] truncate">{ch.title}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+            <section className="my-12 p-6 bg-[#15191F] border-t border-[#2B3038]" aria-label="Documentary treatment">
+              <h2 className="text-2xl mb-3">On the drawing board</h2>
+              <p>Written documentary concept. No playable video is available.</p>
+              <h3 className="text-lg mt-6 mb-3">Proposed chapter outline</h3>
+              <ol className="space-y-3 list-decimal pl-5">{story.documentary.chapters?.map((ch) => <li key={ch.title}>{ch.title}</li>)}</ol>
             </section>
           )}
 
@@ -297,11 +267,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             </div>
             <div>
               <span className="text-xs font-bold text-[#BEF264] uppercase tracking-wider block">
-                WRITTEN BY
+                {story.source ? "ORIGINAL REPORTING BY" : "SAMPLE WRITTEN BY"}
               </span>
               <h4 className="text-base font-bold text-[#F5F5F4]">{story.author.name}</h4>
               <p className="text-xs text-[#A1A1AA] mt-0.5">
-                Senior journalist at TheGameVoice. Focused on world design, environmental acoustics, and interactive narratives.
+                {story.author.role}
               </p>
             </div>
           </div>
