@@ -6,6 +6,20 @@ import { VideoCard } from "@/components/video/VideoCard";
 import { getStoriesByCategory, getTrendingStories, stories } from "@/data/stories";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { pageMetadata } from "@/lib/seo";
+import { siteConfig } from "@/lib/site-config";
+import { websiteStructuredData } from "@/lib/structured-data";
+
+const homeMetadata = pageMetadata({ title: "Gaming News, Reviews & Indie Games", description: siteConfig.description, path: "/" });
+
+export const metadata: Metadata = {
+  ...homeMetadata,
+  title: { absolute: siteConfig.title },
+  openGraph: { ...homeMetadata.openGraph, title: siteConfig.title },
+  twitter: { ...homeMetadata.twitter, title: siteConfig.title },
+};
 
 export default function HomePage() {
   const heroStory = stories[0]; // "The worlds we lose ourselves in"
@@ -19,10 +33,11 @@ export default function HomePage() {
 
   return (
     <div className="home-page space-y-16 lg:space-y-24">
+      <JsonLd data={websiteStructuredData()} />
       <div className="editorial-wrap home-masthead">
         <p className="text-xs uppercase tracking-[.24em] text-[#BEF264]">A different perspective on play</p>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mt-4">
-          <h2>Beyond<br /><span>the screen.</span></h2>
+          <p className="masthead-title">Beyond<br /><span>the screen.</span></p>
           <p className="max-w-xs text-sm pb-2">Games worth a closer look.<br />The craft, the culture, the people behind them.</p>
         </div>
       </div>
@@ -62,6 +77,7 @@ export default function HomePage() {
 
               <Link href={`/articles/${heroStory.slug}`}>
                 <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#F5F5F4] group-hover:text-[#BEF264] transition-colors leading-[1.05] tracking-tight mb-4">
+                  <span className="sr-only">The Game Voice — </span>
                   {heroStory.title}
                   <span className="text-[#BEF264]">.</span>
                 </h1>
@@ -98,7 +114,6 @@ export default function HomePage() {
                 >
                   <Artwork
                     story={story}
-                    priority
                     aspectRatio="aspect-auto"
                     className="absolute inset-0 h-full w-full"
                   />

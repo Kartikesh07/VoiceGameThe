@@ -1,3 +1,10 @@
-import type { Metadata } from "next";
-export const metadata: Metadata = { title: "Search the Archive", description: "Search the Archive — TheGameVoice editorial design preview." };
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Search the Archive",
+  description: "Search stories, topics and authors in The Game Voice archive.",
+  path: "/search",
+  noindex: true,
+});
+
 export default function Layout({ children }: { children: React.ReactNode }) { return children; }

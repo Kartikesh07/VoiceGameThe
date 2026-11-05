@@ -96,7 +96,9 @@ export function ReadingProgressBar() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    let frame = 0;
     const updateProgress = () => {
+      frame = 0;
       const body = document.getElementById("article-body");
       if (!body) return;
       const start = body.getBoundingClientRect().top + window.scrollY - 100;
@@ -104,10 +106,17 @@ export function ReadingProgressBar() {
       setProgress(Math.min(100, Math.max(0, (window.scrollY - start) / distance * 100)));
     };
 
-    window.addEventListener("scroll", updateProgress, { passive: true });
-    window.addEventListener("resize", updateProgress);
+    const scheduleProgress = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateProgress);
+    };
+    window.addEventListener("scroll", scheduleProgress, { passive: true });
+    window.addEventListener("resize", scheduleProgress);
     updateProgress();
-    return () => { window.removeEventListener("scroll", updateProgress); window.removeEventListener("resize", updateProgress); };
+    return () => {
+      window.removeEventListener("scroll", scheduleProgress);
+      window.removeEventListener("resize", scheduleProgress);
+      window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (

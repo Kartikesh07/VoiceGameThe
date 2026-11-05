@@ -98,7 +98,7 @@ export default function Header() {
         <Link
           href="/"
           className="wordmark text-xl sm:text-2xl font-extrabold tracking-[-1.2px] text-[#F5F5F4] whitespace-nowrap group shrink-0"
-          aria-label="TheGameVoice Home"
+          aria-label="The Game Voice home"
         >
           THE<span className="font-light text-[#A1A1AA]">GAME</span>VOICE
           <b className="text-[#BEF264] transition-colors group-hover:text-white">.</b>

@@ -35,6 +35,7 @@ export default function Footer() {
         <div className="lg:col-span-2 space-y-4">
           <Link
             href="/"
+            aria-label="The Game Voice home"
             className="wordmark text-2xl font-extrabold tracking-[-1.2px] text-[#F5F5F4] block"
           >
             THE<span className="font-light text-[#A1A1AA]">GAME</span>VOICE

@@ -61,7 +61,7 @@ export interface ArticleContent {
 }
 
 export interface Story {
-  editorialStatus: "demonstration" | "source-summary";
+  editorialStatus: "demonstration" | "source-summary" | "published";
   source?: { url: string; publication: string; originalTitle: string };
   artworkCredit: string;
   id: string;
@@ -74,6 +74,10 @@ export interface Story {
   alt: string;
   author: Author;
   publishedAt: string;
+  /** Actual revision date for this publication; omit when unknown. */
+  modifiedAt?: string;
+  /** Optional real raster artwork for social crawlers; absolute HTTPS or public path. */
+  socialImage?: { url: string; width: number; height: number; alt: string };
   readTime: string;
   featured?: boolean;
   trending?: boolean;

@@ -18,6 +18,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { articleMetadata } from "@/lib/seo";
+import { articleStructuredData } from "@/lib/structured-data";
 
 interface ArticlePageProps {
   params: Promise<{ slug: string }>;
@@ -36,23 +39,10 @@ export async function generateMetadata({
   const story = getStoryBySlug(slug);
 
   if (!story) {
-    return {
-      title: "Article Not Found",
-    };
+    notFound();
   }
 
-  return {
-    title: `${story.title} — ${story.category}`,
-    description: story.excerpt,
-    openGraph: {
-      title: story.title,
-      description: story.excerpt,
-      type: "article",
-      publishedTime: story.publishedAt,
-      authors: [story.author.name],
-      tags: story.tags,
-    },
-  };
+  return articleMetadata(story);
 }
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
@@ -72,12 +62,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <>
+      <JsonLd data={articleStructuredData(story)} />
       <ReadingProgressBar />
 
       <article className="article-detail min-h-screen pb-24">
         {/* Breadcrumbs Navigation */}
         <div className="border-b border-[#2B3038] bg-[#0E1116]">
-          <div className="editorial-wrap py-3.5 flex items-center gap-2 text-xs text-[#A1A1AA] overflow-x-auto scrollbar-none">
+          <nav aria-label="Breadcrumb" className="editorial-wrap py-3.5 flex items-center gap-2 text-xs text-[#A1A1AA] overflow-x-auto scrollbar-none">
             <Link href="/" className="hover:text-[#BEF264] transition-colors whitespace-nowrap">
               Home
             </Link>
@@ -89,8 +80,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               {story.category}
             </Link>
             <ChevronRight size={13} className="shrink-0 text-[#2B3038]" />
-            <span className="text-[#F5F5F4] truncate font-medium">{story.title}</span>
-          </div>
+            <span aria-current="page" className="text-[#F5F5F4] truncate font-medium">{story.title}</span>
+          </nav>
         </div>
 
         {/* Article Header Container */}
@@ -134,25 +125,26 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             </div>
 
             <div className="text-right">
-              <span className="block font-medium text-[#F5F5F4]">{story.source ? "Original publication" : "Sample date"}</span>
-              <span className="text-[11px] text-[#A1A1AA]">{story.publishedAt}</span>
+              <span className="block font-medium text-[#F5F5F4]">{story.editorialStatus === "published" ? "Published" : story.source ? "Original publication" : "Sample date"}</span>
+              <time dateTime={story.publishedAt} className="text-[11px] text-[#A1A1AA]">{story.publishedAt}</time>
             </div>
           </div>
         </header>
 
-        <div className="editorial-wrap max-w-4xl mb-8">
+        {story.editorialStatus !== "published" && <div className="editorial-wrap max-w-4xl mb-8">
           <div className="provenance-note">
             <strong>{story.source ? "Published reading note" : "Editorial demonstration"}</strong>
             <p>{story.source ? "A short summary of a published piece, credited to its original author. Illustration is not game footage." : "Fictional editorial sample. Games, people, scores and production details are illustrative; no testing, interviews or reporting took place."}</p>
             {story.source && <a href={story.source.url} target="_blank" rel="noreferrer" className="inline-flex items-center min-h-11 text-[#BEF264] underline underline-offset-4">Read the original on {story.source.publication} ↗</a>}
           </div>
-        </div>
+        </div>}
         {/* Large Cover Hero Image */}
         <div className="editorial-wrap max-w-5xl mb-12">
           <div className="relative rounded-2xl overflow-hidden border border-[#2B3038] shadow-2xl">
             <Artwork
               story={story}
               priority
+              sizes="(max-width: 1023px) 100vw, 1024px"
               aspectRatio="aspect-[21/10]"
               className="w-full"
             />
@@ -267,7 +259,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             </div>
             <div>
               <span className="text-xs font-bold text-[#BEF264] uppercase tracking-wider block">
-                {story.source ? "ORIGINAL REPORTING BY" : "SAMPLE WRITTEN BY"}
+                {story.editorialStatus === "published" ? "WRITTEN BY" : story.source ? "ORIGINAL REPORTING BY" : "SAMPLE WRITTEN BY"}
               </span>
               <h4 className="text-base font-bold text-[#F5F5F4]">{story.author.name}</h4>
               <p className="text-xs text-[#A1A1AA] mt-0.5">

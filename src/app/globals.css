@@ -30,8 +30,8 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .prototype-note { padding-block: 12px; font-size: 11px; color: var(--muted); border-bottom: 1px solid var(--line); }
 .prototype-note span { color: var(--lime); font-weight: 700; margin-right: 12px; }
 .home-page .home-masthead { margin-top: 36px; margin-bottom: 32px; }
-.home-masthead h2 { font-size: clamp(56px, 7.7vw, 112px); line-height: .9; letter-spacing: -.065em; font-weight: 700; }
-.home-masthead h2 span { color: var(--muted); }
+.home-masthead .masthead-title { font-family: var(--font-space), system-ui, sans-serif; font-size: clamp(56px, 7.7vw, 112px); line-height: .9; letter-spacing: -.065em; font-weight: 700; text-wrap: balance; }
+.home-masthead .masthead-title span { color: var(--muted); }
 .home-page .home-hero { margin-top: 0; }
 .home-hero > .grid { gap: 16px; }
 .home-hero > .grid > div:first-child { border: 0; border-radius: 4px; }
@@ -95,7 +95,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 @media (max-width: 767px) {
   .prototype-note { font-size: 10px; line-height: 1.6; }
   .home-page .home-masthead { margin-top: 28px; }
-  .home-masthead > div > p { max-width: 290px; font-size: 13px; }
+  .home-masthead > div > p:not(.masthead-title) { max-width: 290px; font-size: 13px; }
   .home-hero > .grid > div:first-child { min-height: 530px; }
   .home-hero > .grid > div:first-child > div:last-child { padding: 24px; }
   .home-hero > .grid > div:last-child { display: grid; grid-template-columns: 1fr; gap: 16px; }

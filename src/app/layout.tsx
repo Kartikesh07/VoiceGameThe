@@ -4,6 +4,7 @@ import { BookmarkProvider } from "@/context/BookmarkContext";
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { siteConfig } from "@/lib/site-config";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,13 +19,15 @@ const space = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: siteConfig.url,
   title: {
-    template: "%s | TheGameVoice",
-    default: "TheGameVoice — Stories Beyond the Screen",
+    template: `%s | ${siteConfig.name}`,
+    default: siteConfig.title,
   },
   description:
-    "A premium digital publication with independent perspectives on games, their creators, and the virtual worlds we get lost in.",
-  robots: { index: false, follow: false },
+    siteConfig.description,
+  applicationName: siteConfig.name,
+  robots: { index: siteConfig.allowIndexing, follow: true },
   keywords: [
     "Gaming Journalism",
     "Game Reviews",
